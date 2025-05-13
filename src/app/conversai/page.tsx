@@ -120,33 +120,37 @@ export default function ConversAI() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             {/* Text Content */}
-            <div className="md:w-5/12 lg:w-5/12 max-w-4xl text-left space-y-4 pl-0 md:pl-8 lg:pl-16 xl:pl-24">
+            <div className="md:w-6/12 lg:w-7/12 text-left space-y-4 pl-0 md:pl-8 lg:pl-16 xl:pl-24">
               <span className="text-sm bg-orange-100 text-orange-600 px-3 py-1 rounded-full inline-block">
-                AI 콘텐츠 자동화
+                AI 고객 커뮤니케이션
               </span>
               <motion.h1
-                className="text-4xl font-bold text-[#1C2B50] leading-snug"
+                className="text-3xl sm:text-4xl font-bold text-[#1C2B50] leading-tight sm:leading-snug max-w-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                반복되는 콘텐츠 제작,<br />이제 AI가 대신합니다
+                <span className="inline md:hidden">고객 응대, 내부 안내, 기술지원까지 AI가 고객 경험을 바꿉니다</span>
+                <span className="hidden md:inline lg:hidden">고객 응대, 내부 안내,<br />기술지원까지 AI가<br />고객 경험을 바꿉니다</span>
+                <span className="hidden lg:inline">고객 응대, 내부 안내, 기술지원까지<br />AI가 고객 경험을 바꿉니다</span>
               </motion.h1>
               <motion.p
-                className="text-lg text-gray-600"
+                className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                기획부터 퍼블리싱까지의 전 과정을<br />AutoPageAI가 자동으로 처리합니다.
+                <span className="inline md:hidden">ConversAI는 정확하고 안전한 응답으로 비즈니스 커뮤니케이션의 효율을 획기적으로 높입니다.</span>
+                <span className="hidden md:inline lg:hidden">ConversAI는 정확하고 안전한<br />응답으로 비즈니스 커뮤니케이션의<br />효율을 획기적으로 높입니다.</span>
+                <span className="hidden lg:inline">ConversAI는 정확하고 안전한 응답으로 비즈니스 커뮤니케이션의 효율을 획기적으로 높입니다.</span>
               </motion.p>
             </div>
             
             {/* Illustration */}
-            <div className="md:w-7/12 lg:w-7/12 flex justify-end">
+            <div className="md:w-6/12 lg:w-5/12 flex justify-center md:justify-end">
               <Image
-                src="/illustrations/Allura - auto_04.png"
-                alt="AutoPageAI"
+                src="/illustrations/conversai_visual.png"
+                alt="ConversAI"
                 width={460}
                 height={400}
                 className="w-full max-w-[460px] object-contain"
@@ -157,8 +161,239 @@ export default function ConversAI() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* 왜 ConversAI인가요 Section */}
       <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 space-y-12">
+          {/* Section Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.6 }}
+            className="text-center space-y-4 max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl font-bold text-[#1C2B50] leading-snug">
+              왜 ConversAI인가요?
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              고객 경험을 바꾸는, 단순한 챗봇 그 이상의 가치
+            </p>
+          </motion.div>
+
+          {/* First Row: Business Outcome Cards */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
+          >
+            {/* Card 1: 반복 응대 업무 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-[#F9FAFB] rounded-xl p-6 text-left shadow-sm hover:shadow-md transition duration-300 hover:translate-y-[-4px]"
+              whileHover={{ scale: 1.02 }}
+            >
+              <motion.div 
+                className="text-slate-500 mb-3"
+                initial={{ scale: 0.8 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260, 
+                  damping: 20,
+                  delay: 0.2
+                }}
+              >
+                <Clock className="w-8 h-8" />
+              </motion.div>
+              <p className="text-sm font-medium text-gray-500">반복 응대 업무</p>
+              <p className="text-2xl font-bold text-[#1C2B50] mt-1">
+                <CountUp 
+                  end={70} 
+                  duration={2500} 
+                  suffix="% 감소"
+                  prefix="최대 "
+                />
+              </p>
+              <p className="text-gray-600 text-sm mt-2">실제 운영 중 자주 반복되는 질문 응답과 내부 안내를 AI가 처리합니다.</p>
+            </motion.div>
+
+            {/* Card 2: 고객 만족도 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-[#F9FAFB] rounded-xl p-6 text-left shadow-sm hover:shadow-md transition duration-300 hover:translate-y-[-4px]"
+              whileHover={{ scale: 1.02 }}
+            >
+              <motion.div 
+                className="text-slate-500 mb-3"
+                initial={{ scale: 0.8 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260, 
+                  damping: 20,
+                  delay: 0.3
+                }}
+              >
+                <TrendingUp className="w-8 h-8" />
+              </motion.div>
+              <p className="text-sm font-medium text-gray-500">고객 만족도</p>
+              <p className="text-2xl font-bold text-[#1C2B50] mt-1">
+                <CountUp 
+                  end={2} 
+                  duration={2500} 
+                  suffix="배 향상"
+                  prefix="최대 "
+                />
+              </p>
+              <p className="text-gray-600 text-sm mt-2">빠르고 정확한 응답으로 이탈률을 줄이고, 만족도를 끌어올립니다.</p>
+            </motion.div>
+
+            {/* Card 3: 지속 학습 & 맞춤형 응대 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-[#F9FAFB] rounded-xl p-6 text-left shadow-sm hover:shadow-md transition duration-300 hover:translate-y-[-4px]"
+              whileHover={{ scale: 1.02 }}
+            >
+              <motion.div 
+                className="text-slate-500 mb-3"
+                initial={{ scale: 0.8 }}
+                whileInView={{ scale: 1 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260, 
+                  damping: 20,
+                  delay: 0.4
+                }}
+              >
+                <Sparkles className="w-8 h-8" />
+              </motion.div>
+              <p className="text-sm font-medium text-gray-500">지속 학습 & 맞춤형 응대</p>
+              <p className="text-2xl font-bold text-[#1C2B50] mt-1">
+                강화
+              </p>
+              <p className="text-gray-600 text-sm mt-2">도메인 기반 문서 학습 + 개인화 추천으로 정교한 대화가 가능합니다.</p>
+            </motion.div>
+          </motion.div>
+
+          {/* Second Row: Technology Differentiator Cards */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
+          >
+            {/* 카드 1: 환각 방지 시스템 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            >
+              <motion.div
+                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
+              >
+                <ChartBarIcon className="w-8 h-8" />
+              </motion.div>
+              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">환각 방지 시스템</h3>
+              <p className="text-gray-600">
+                Guardrail 구조로 허위 정보와 유해 발화를 효과적으로 차단합니다.
+              </p>
+            </motion.div>
+
+            {/* 카드 2: 최신 정보 반영 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            >
+              <motion.div
+                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
+              >
+                <Search className="w-8 h-8" />
+              </motion.div>
+              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">최신 정보 반영</h3>
+              <p className="text-gray-600">
+                브라우저 자동화를 통해 실시간 데이터를 수집하고 답변에 반영합니다.
+              </p>
+            </motion.div>
+
+            {/* 카드 3: 맞춤형 응대 시나리오 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            >
+              <motion.div
+                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
+              >
+                <FileEdit className="w-8 h-8" />
+              </motion.div>
+              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">맞춤형 응대 시나리오</h3>
+              <p className="text-gray-600">
+                고객 유형과 상황에 따라 다양한 대화 흐름을 설계할 수 있습니다.
+              </p>
+            </motion.div>
+
+            {/* 카드 4: 다국어 & 음성 지원 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            >
+              <motion.div
+                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
+              >
+                <Smartphone className="w-8 h-8" />
+              </motion.div>
+              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">다국어 & 음성 지원</h3>
+              <p className="text-gray-600">
+                글로벌 고객을 위한 다국어 처리 및 STT/TTS 기반 음성 대화 제공
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-[#F9FAFB]">
         <div className="container mx-auto px-4 space-y-10">
           {/* Intro copy */}
           <motion.div
