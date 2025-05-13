@@ -1,72 +1,118 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { Brain, Code, Rocket, Shield } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import CountUp from 'react-countup'
 
-const keywords = [
+const metrics = [
   {
-    title: 'AI 혁신',
-    description: '최신 AI 기술을 활용한 솔루션 개발',
-    icon: Brain,
+    value: 25,
+    suffix: '+',
+    unit: 'Years',
+    description: '2000년 설립, 디지털 전략 기반의 긴 호흡',
   },
   {
-    title: '기술 전문성',
-    description: '풍부한 개발 경험과 기술력',
-    icon: Code,
+    value: 600,
+    suffix: '+',
+    unit: 'Projects',
+    description: '다양한 산업과 고객을 위한 실질적 수행 경험',
   },
   {
-    title: '빠른 성장',
-    description: '지속적인 혁신과 성장 추구',
-    icon: Rocket,
-  },
-  {
-    title: '신뢰성',
-    description: '안정적인 서비스와 보안',
-    icon: Shield,
+    value: 75,
+    suffix: '+',
+    unit: 'Awards',
+    description: '국내외에서 인정받은 크리에이티브와 기술력',
   },
 ]
 
 export function AboutSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+
+  useEffect(() => {
+    if (isHovered) return
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % metrics.length)
+    }, 3500)
+
+    return () => clearInterval(interval)
+  }, [isHovered])
+
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            프레임아웃 소개
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            프레임아웃은 디지털 에이전시로서 AI 기술을 활용한 혁신적인 솔루션을 제공합니다.
-            고객의 비즈니스 성장을 위한 최적의 디지털 전환을 지원합니다.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="space-y-4 max-w-[500px]"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">
+              신뢰할 수 있는 AI 파트너,<br />
+              프레임아웃
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              프레임아웃은 디지털 경험의 본질을 탐구하는 Xplorer(Experience Explorer)입니다.
+              전략, 디자인, 기술을 통합하여 성과 중심의 경험을 설계하며,
+              생성형 AI 전문 조직 AXC(AI eXperience Center)를 통해
+              실제 비즈니스 환경에 적용 가능한 AI 솔루션을 직접 개발합니다.
+            </p>
+            <p className="text-lg font-semibold text-[#1C2B50]">
+              프레임아웃은 오늘도, 새로운 경험의 기준을 고민합니다.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {keywords.map((keyword, index) => (
-            <motion.div
-              key={keyword.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
-                    <keyword.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{keyword.title}</h3>
-                  <p className="text-gray-600">{keyword.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          {/* Right Column - Auto-rotating Card */}
+          <div 
+            className="w-full max-w-xl mx-auto"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Card className="h-[280px] hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+              <CardContent className="p-8 h-full flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center w-full"
+                  >
+                    <motion.div
+                      initial={{ scale: 0.5 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="space-y-6"
+                    >
+                      <div className="space-y-3">
+                        <span className="text-5xl font-extrabold text-[#1C2B50] block">
+                          <CountUp
+                            end={metrics[currentSlide].value}
+                            suffix={metrics[currentSlide].suffix}
+                            duration={2}
+                            enableScrollSpy
+                            scrollSpyOnce
+                          />
+                        </span>
+                        <span className="text-3xl text-gray-600 font-medium block">
+                          {metrics[currentSlide].unit}
+                        </span>
+                      </div>
+                      <p className="text-base text-gray-600">
+                        {metrics[currentSlide].description}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
