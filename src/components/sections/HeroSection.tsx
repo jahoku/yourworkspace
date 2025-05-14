@@ -46,7 +46,7 @@ export function HeroSection() {
         onLoadedData={() => setIsVideoLoading(false)}
         onCanPlay={() => setIsVideoLoading(false)}
       >
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        <source src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/hero-bg.mp4" type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}
