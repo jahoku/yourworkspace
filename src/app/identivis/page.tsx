@@ -122,7 +122,7 @@ export default function IdentiVis() {
             {/* Text Content */}
             <div className="md:w-5/12 lg:w-5/12 max-w-4xl text-left space-y-4 pl-0 md:pl-8 lg:pl-16 xl:pl-24">
               <span className="text-sm bg-orange-100 text-orange-600 px-3 py-1 rounded-full inline-block">
-                AI 콘텐츠 자동화
+                AI 디자인 파트너
               </span>
               <motion.h1
                 className="text-4xl font-bold text-[#1C2B50] leading-snug"
@@ -130,7 +130,7 @@ export default function IdentiVis() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                반복되는 콘텐츠 제작,<br />이제 AI가 대신합니다
+                브랜드의 모든 비주얼을<br />AI가 일관되게 만듭니다
               </motion.h1>
               <motion.p
                 className="text-lg text-gray-600"
@@ -138,14 +138,15 @@ export default function IdentiVis() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                기획부터 퍼블리싱까지의 전 과정을<br />AutoPageAI가 자동으로 처리합니다.
+                오브젝트, 일러스트, 캐릭터까지<br />
+                복잡한 아이디어도 일관된 디자인으로 실현합니다.
               </motion.p>
             </div>
             
             {/* Illustration */}
             <div className="md:w-7/12 lg:w-7/12 flex justify-end">
               <Image
-                src="/illustrations/Allura - auto_04.png"
+                src="/illustrations/identivis_visual.png"
                 alt="IdentiVis"
                 width={460}
                 height={400}
@@ -154,6 +155,62 @@ export default function IdentiVis() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Problem/Solution Section */}
+      <section className="w-full py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-5">
+            디자인, 왜 항상 제각각일까요?
+          </h2>
+          <p className="text-lg text-gray-500 mb-16">
+            IdentiVis는 이런 문제를 정확히 해결합니다.
+          </p>
+
+          {/* 문제 카드 */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-[#FDF4F4] border border-red-200 rounded-3xl p-10 mb-12 shadow-lg text-left"
+          >
+            <div className="flex items-start gap-3 mb-5">
+              <span className="text-red-500 text-3xl">🚫</span>
+              <h3 className="text-xl font-semibold text-red-800">
+                디자인, 왜 항상 제각각일까요?
+              </h3>
+            </div>
+            <ul className="text-red-900 text-base space-y-4 leading-relaxed">
+              <li>브랜드 가이드를 공유해도 결과물이 다릅니다.</li>
+              <li>협업 시 스타일 일관성을 유지하기 어렵습니다.</li>
+              <li>반복적인 디자인 작업에 시간이 과도하게 투입됩니다.</li>
+              <li>디자인 퀄리티를 맞추기 위해 많은 리소스가 낭비됩니다.</li>
+            </ul>
+          </motion.div>
+
+          {/* 해결 카드 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-[#F1FBF5] border border-green-200 rounded-3xl p-10 shadow-lg text-left"
+          >
+            <div className="flex items-start gap-3 mb-5">
+              <span className="text-green-500 text-3xl">✅</span>
+              <h3 className="text-xl font-semibold text-green-800">
+                IdentiVis는 다릅니다
+              </h3>
+            </div>
+            <ul className="text-green-900 text-base space-y-4 leading-relaxed">
+              <li>스타일가이드를 학습한 AI가 일관된 디자인을 자동 생성합니다.</li>
+              <li>누구나 브랜드에 맞는 비주얼을 손쉽게 만들 수 있습니다.</li>
+              <li>디자이너는 반복 작업 대신 창의적인 업무에 집중할 수 있습니다.</li>
+              <li>적은 리소스로 더 빠르고 정교한 결과물을 제공합니다.</li>
+            </ul>
+          </motion.div>
         </div>
       </section>
 

@@ -108,7 +108,11 @@ export default function AutoPageAI() {
     // Use setTimeout to ensure the video is visible before playing
     setTimeout(() => {
       if (videoRef.current) {
-        videoRef.current.play()
+        videoRef.current.play().catch(error => {
+          console.error("Video playback failed:", error)
+          // Fallback for browsers that block autoplay
+          alert("비디오 자동 재생에 실패했습니다. 비디오 컨트롤을 사용하여 재생해주세요.")
+        })
       }
     }, 100)
   }
@@ -628,9 +632,9 @@ export default function AutoPageAI() {
                   onClick={handlePlayVideo}
                 />
                 
-                {/* Play button overlay with enhanced styling */}
+                {/* Play button overlay centered */}
                 <div 
-                  className="absolute inset-0 flex items-end justify-center pb-32" 
+                  className="absolute inset-0 flex items-center justify-center" 
                   onClick={handlePlayVideo}
                 >
                   <div className="bg-orange-500 bg-opacity-90 rounded-full w-20 h-20 flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:bg-opacity-100 group-hover:shadow-xl">
@@ -649,6 +653,7 @@ export default function AutoPageAI() {
               poster="/images/autopageai-thumbnail.jpg"
               controls
               preload="metadata"
+              playsInline
               className={isVideoPlaying ? "rounded-xl border border-slate-200 shadow-md w-full" : "hidden"}
               id="demoVideo"
             />
