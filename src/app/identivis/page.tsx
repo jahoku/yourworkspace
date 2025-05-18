@@ -8,6 +8,8 @@ import { useInView } from 'react-intersection-observer'
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { MessageCircle } from 'lucide-react'
+import ContactDialog from '@/components/contact-dialog'
 
 // Components
 const features = [
@@ -108,7 +110,11 @@ export default function IdentiVis() {
     // Use setTimeout to ensure the video is visible before playing
     setTimeout(() => {
       if (videoRef.current) {
-        videoRef.current.play()
+        videoRef.current.play().catch(error => {
+          console.error("Video playback failed:", error)
+          // Fallback for browsers that block autoplay
+          alert("비디오 자동 재생에 실패했습니다. 비디오 컨트롤을 사용하여 재생해주세요.")
+        })
       }
     }, 100)
   }
@@ -159,14 +165,26 @@ export default function IdentiVis() {
       </section>
 
       {/* Problem/Solution Section */}
-      <section className="w-full py-24 bg-white">
+      <section className="w-full py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-5">
+          <motion.h2 
+            className="text-3xl font-bold text-[#1C2B50] mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.6 }}
+          >
             디자인, 왜 항상 제각각일까요?
-          </h2>
-          <p className="text-lg text-gray-500 mb-16">
+          </motion.h2>
+          <motion.p 
+            className="text-lg text-gray-600 mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             IdentiVis는 이런 문제를 정확히 해결합니다.
-          </p>
+          </motion.p>
 
           {/* 문제 카드 */}
           <motion.div 
@@ -214,200 +232,124 @@ export default function IdentiVis() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 space-y-10">
-          {/* Intro copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.6 }}
-            className="text-center space-y-4 max-w-2xl mx-auto"
-          >
-            <h2 className="text-3xl font-bold text-[#1C2B50] leading-snug">
-              더 빠르게, 더 완성도 있게<br />
-              콘텐츠 운영의 흐름을 AI가 바꿉니다
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              반복되는 제작 업무에 시간을 빼앗기고 있다면,<br />
-              AutoPageAI는 실무자의 시간과 전략을 지켜주는 콘텐츠 자동화 플랫폼입니다.<br />
-              성과 높은 패턴은 학습하고, 브랜드는 일관되게 유지하며 운영 효율을 높입니다.
-            </p>
-          </motion.div>
-
+      {/* How it Works Section - Replacement */}
+      <section className="w-full py-20 bg-[#F9FAFB]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.h2 
+            className="text-3xl font-bold text-[#1C2B50] mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-[#1C2B50] text-center mb-12"
           >
-            주요 기능
+            브랜드 스타일, 이렇게 자동화됩니다
           </motion.h2>
-          
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.15
-                }
-              }
-            }}
-          >
-            {/* 카드 1 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+
+          <div className="space-y-10 text-left">
+            {/* Step 1 */}
+            <motion.div 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <motion.div
-                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
-              >
-                <ChartBarIcon className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">AI 맞춤 콘텐츠 추천</h3>
-              <p className="text-gray-600">
-                과거 성과 데이터를 분석하여 목적에 맞는 템플릿, 문안, 디자인을 제안합니다.
-              </p>
+              <div className="text-xl font-bold text-[#FF6B00] shrink-0">Step 1</div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">브랜드 자산 학습</p>
+                <p className="text-gray-600">
+                  스타일가이드, 로고, 컬러, 폰트 등 핵심 요소를 AI가 학습합니다. 필요 시 <strong>LoRA 기반 맞춤 학습</strong>도 지원합니다.
+                </p>
+              </div>
             </motion.div>
 
-            {/* 카드 2 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            {/* Step 2 - Replaced with provided content */}
+            <motion.div 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <motion.div
-                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
-              >
-                <Paintbrush className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">브랜드 일관성 자동 적용</h3>
-              <p className="text-gray-600">
-                브랜드 톤과 스타일을 학습하여 콘텐츠 전반에 일관된 비주얼 가이드를 적용합니다.
-              </p>
+              <div className="text-xl font-bold text-[#FF6B00] shrink-0">Step 2</div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">스타일 및 형식 선택</p>
+                <p className="text-gray-600">
+                  스타일을 고르고, 레퍼런스 이미지와 함께 2D 또는 3D 형식을 선택합니다.
+                </p>
+              </div>
             </motion.div>
 
-            {/* 카드 3 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            {/* Step 3 */}
+            <motion.div 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <motion.div
-                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
-              >
-                <Search className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">실시간 경쟁 콘텐츠 분석</h3>
-              <p className="text-gray-600">
-                유사 타깃의 경쟁 콘텐츠를 분석하여 전략 수립에 활용할 수 있는 인사이트를 제공합니다.
-              </p>
+              <div className="text-xl font-bold text-[#FF6B00] shrink-0">Step 3</div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">프롬프트 입력</p>
+                <p className="text-gray-600">
+                  예) "핑크 배경에 웃고 있는 곰 캐릭터"<br />
+                  텍스트만 입력하면 이미지 제작이 시작됩니다.
+                </p>
+              </div>
             </motion.div>
 
-            {/* 카드 4 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            {/* Step 4 */}
+            <motion.div 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <motion.div
-                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
-              >
-                <FileEdit className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">카피 및 디자인 자동 생성</h3>
-              <p className="text-gray-600">
-                기본 문안 작성과 디자인 생성도구를 통해 콘텐츠 제작 속도를 높입니다.
-              </p>
+              <div className="text-xl font-bold text-[#FF6B00] shrink-0">Step 4</div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">AI 자동 생성 + 스타일 적용</p>
+                <p className="text-gray-600">
+                  입력한 프롬프트에 따라 <strong>컬러, 폰트, 톤앤매너</strong>가 자동 적용되어 브랜드 스타일을 반영한 비주얼이 완성됩니다.
+                </p>
+              </div>
             </motion.div>
 
-            {/* 카드 5 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
+            {/* Step 5 */}
+            <motion.div 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <motion.div
-                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
-              >
-                <CodeIcon className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">검수 및 HTML 변환</h3>
-              <p className="text-gray-600">
-                AI가 1차 검수하고, HTML 변환, 템플릿 관리를 통해 반복적인 업무를 효율화합니다.
-              </p>
+              <div className="text-xl font-bold text-[#FF6B00] shrink-0">Step 5</div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">결과물 다운로드 또는 편집</p>
+                <p className="text-gray-600">
+                  PNG, JPEG, SVG 등 다양한 포맷으로 저장하고, 디자이너가 바로 수정해 활용할 수 있습니다.
+                </p>
+              </div>
             </motion.div>
-
-            {/* 카드 6 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
-            >
-              <motion.div
-                className="w-8 h-8 text-slate-500 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-300 mb-3"
-              >
-                <Smartphone className="w-8 h-8" />
-              </motion.div>
-              <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">멀티 플랫폼 최적화 대응</h3>
-              <p className="text-gray-600">
-                웹, 모바일, 커머스 채널에 맞춰 콘텐츠 리사이징을 지원하며, CMS 연동은 별도 협의가 필요합니다.
-              </p>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Why IdentiVis Section */}
-      <section className="py-20 bg-[#F9FAFB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2 
-            className="text-3xl font-bold text-center text-[#1C2B50] mb-4"
+            className="text-3xl font-bold text-[#1C2B50] mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.6 }}
           >
-            왜 IdentiVis인가요?
+            Identivis의 주요 기능
           </motion.h2>
-          <motion.p
-            className="text-gray-600 text-lg mb-10 max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            콘텐츠 자동화 도구는 많습니다.<br />
-            IdentiVis는 전략 수립부터 제작, 운영, 유지보수까지<br />
-            하나의 흐름으로 연결된 All-in-One 솔루션입니다.
-          </motion.p>
-          
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-4xl mx-auto"
+
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-left"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -419,224 +361,43 @@ export default function IdentiVis() {
               }
             }}
           >
-            {/* 항목 1 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-              className="flex items-start gap-4"
-            >
-              <Rocket className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 className="text-lg font-semibold text-[#1C2B50] mb-2">
-                  콘텐츠 제작 속도 향상
-                </h4>
-                <p className="text-gray-600">
-                  반복 업무를 자동화해 콘텐츠 제작 시간을 대폭 줄입니다.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* 항목 2 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-              className="flex items-start gap-4"
-            >
-              <ArrowRightLeft className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 className="text-lg font-semibold text-[#1C2B50] mb-2">
-                  전략부터 운영까지 연결
-                </h4>
-                <p className="text-gray-600">
-                  경쟁사 분석부터 콘텐츠 운영까지, 하나의 자동화된 흐름으로 연결됩니다.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* 항목 3 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-              className="flex items-start gap-4"
-            >
-              <Users className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 className="text-lg font-semibold text-[#1C2B50] mb-2">
-                  협업 효율 향상
-                </h4>
-                <p className="text-gray-600">
-                  팀 간 반복 커뮤니케이션 없이, 더 빠른 결정과 실행이 가능합니다.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* 항목 4 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-              className="flex items-start gap-4"
-            >
-              <Laptop className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 className="text-lg font-semibold text-[#1C2B50] mb-2">
-                  멀티플랫폼 대응력
-                </h4>
-                <p className="text-gray-600">
-                  웹, 모바일, 커머스 플랫폼에 맞춘 콘텐츠가 자동 퍼블리싱됩니다.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* 항목 5 */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-              className="flex items-start gap-4 md:col-span-2"
-            >
-              <TrendingUp className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 className="text-lg font-semibold text-[#1C2B50] mb-2">
-                  지속 가능한 성과 향상
-                </h4>
-                <p className="text-gray-600">
-                  AI가 성과 높은 콘텐츠 패턴을 학습하고 반영해 예측 가능한 전략이 가능해집니다.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How it Works Section - NEW */}
-      <section id="workflow-impact" className="py-24 bg-white">
-        <div className="container mx-auto text-center">
-          <motion.h2
-            className="text-3xl font-bold text-[#1C2B50] mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-          >
-            실무의 흐름을 자동화하면, 성과도 달라집니다
-          </motion.h2>
-          <motion.p
-            className="text-gray-600 text-lg mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            IdentiVis는 실무자가 실제로 거치는 콘텐츠 제작 과정을 자동화합니다.<br />
-            반복되는 작업은 줄이고, 전략과 창의에 더 많은 시간을 집중할 수 있도록 설계되었습니다.
-          </motion.p>
-
-          <motion.p
-            className="text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10 italic"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            콘텐츠 한 페이지를 만드는 데 <span className="text-orange-500 font-medium">평균 3~4일</span>이 걸리던 작업, <br/>
-            IdentiVis를 활용하면 기획부터 퍼블리싱까지 <span className="text-orange-500 font-medium">1~2일 이내로 단축</span>할 수 있습니다. <br/><br/>
-            
-            운영 중 페이지 수정이나 이벤트 교체도 간단해져 <br/>
-            유지보수 시간이 <span className="text-orange-500 font-medium">최대 70%까지 감소</span>하며, <br/>
-            브랜드 톤은 일관되게 유지하면서, 제작 <span className="text-orange-500 font-medium">효율은 2배 이상 향상</span>됩니다.
-          </motion.p>
-
-          {/* 상단 일러스트 기반 기능 카드 */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.15 } },
-              hidden: {},
-            }}
-          >
-            {features.map((feature, idx) => (
+            {[
+              {
+                title: "Stable Diffusion 기반 이미지 생성",
+                desc: "고해상도 이미지 생성이 가능한 최신 딥러닝 모델을 활용합니다."
+              },
+              {
+                title: "LoRA 학습으로 브랜드 스타일 최적화",
+                desc: "브랜드 자산을 반영한 경량 학습으로 커스터마이징이 가능합니다."
+              },
+              {
+                title: "프롬프트 기반 아이콘·일러스트 자동화",
+                desc: "키워드만 입력하면 아이콘, 배경, 일러스트가 자동 생성됩니다."
+              },
+              {
+                title: "스타일가이드 반영률 98% 이상",
+                desc: "CI/CD 기준에 따라 색상, 폰트, 톤앤매너를 정밀하게 반영합니다."
+              },
+              {
+                title: "정교한 표현 제어 기술",
+                desc: "ControlNet과 Deep Reasoning으로 세부 요소를 세밀하게 조정할 수 있습니다."
+              },
+              {
+                title: "웹 기반 SaaS + 다양한 포맷 지원",
+                desc: "PNG, JPEG, SVG 등으로 저장하고 협업 플랫폼에서 바로 활용할 수 있습니다."
+              }
+            ].map((feature, index) => (
               <motion.div
-                key={idx}
-                className="flex flex-col items-center text-center px-4"
+                key={index}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.03] group"
               >
-                <img
-                  src={feature.img}
-                  alt={feature.title}
-                  className={`mb-4 ${feature.img.includes('AP_icon_05') ? 'w-auto h-16 object-contain' : 'w-16 h-16'} grayscale hover:grayscale-0 transition duration-300`}
-                />
                 <h3 className="text-lg font-semibold text-[#1C2B50] mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* 하단 수치 강조 카드 (B안 스타일) */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.15 } },
-              hidden: {},
-            }}
-          >
-            {metrics.map((metric, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-[#F9FAFB] rounded-xl p-6 text-left shadow-sm hover:shadow-md transition duration-300 hover:translate-y-[-4px]"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <motion.div 
-                  className="text-slate-500 mb-3"
-                  initial={{ scale: 0.8 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 260, 
-                    damping: 20,
-                    delay: 0.2 + idx * 0.1
-                  }}
-                >
-                  {metric.icon}
-                </motion.div>
-                <p className="text-sm font-medium text-gray-500">{metric.title}</p>
-                <p className="text-2xl font-bold text-[#1C2B50] mt-1">
-                  <CountUp 
-                    end={parseInt(metric.highlight)} 
-                    duration={2500} 
-                    suffix={metric.suffix}
-                    prefix={metric.prefix}
-                  />
-                </p>
-                <p className="text-gray-600 text-sm mt-2">{metric.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -652,7 +413,7 @@ export default function IdentiVis() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          IdentiVis, 실제로 이렇게 작동합니다
+          브랜드 스타일이 자동으로 구현되는 순간
         </motion.h2>
         <motion.p
           className="text-gray-600 text-lg mb-8"
@@ -661,8 +422,8 @@ export default function IdentiVis() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          실제 기업 프로젝트에서 활용된 IdentiVis의 자동화 흐름을 영상으로 만나보세요.<br />
-          누구나 실무에서 바로 활용할 수 있도록 설계되었습니다.
+          스타일가이드를 기반으로 어떻게 이미지가 자동 생성되는지<br />
+          실제 작동 화면으로 보여드립니다.
         </motion.p>
 
         <motion.div
@@ -685,9 +446,9 @@ export default function IdentiVis() {
                   onClick={handlePlayVideo}
                 />
                 
-                {/* Play button overlay with enhanced styling */}
+                {/* Play button overlay with enhanced styling and centered position */}
                 <div 
-                  className="absolute inset-0 flex items-end justify-center pb-32" 
+                  className="absolute inset-0 flex items-center justify-center" 
                   onClick={handlePlayVideo}
                 >
                   <div className="bg-orange-500 bg-opacity-90 rounded-full w-20 h-20 flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:bg-opacity-100 group-hover:shadow-xl">
@@ -706,6 +467,7 @@ export default function IdentiVis() {
               poster="/images/autopageai-thumbnail.jpg"
               controls
               preload="metadata"
+              playsInline
               className={isVideoPlaying ? "rounded-xl border border-slate-200 shadow-md w-full" : "hidden"}
               id="demoVideo"
             />
@@ -717,7 +479,7 @@ export default function IdentiVis() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            ※ 위 영상은 IdentiVis를 활용한 IBK기업은행 프로젝트 화면 일부를 기반으로 제작되었습니다.
+            ※ 위 영상은 IdentiVis를 활용한 롯데월드 프로젝트 화면 일부를 기반으로 제작되었습니다.
           </motion.p>
         </motion.div>
       </section>
@@ -747,7 +509,7 @@ export default function IdentiVis() {
             }}
             transition={{ duration: 0.6 }}
           >
-            더 적은 인원으로, 더 많은 일을 할 수 있다면?
+            디자인은 반복되고, 리소스는 부족하다면?
           </motion.p>
 
           {/* 메인 카피 */}
@@ -759,7 +521,7 @@ export default function IdentiVis() {
             }}
             transition={{ duration: 0.6 }}
           >
-            지금, 콘텐츠 자동화를 시작해보세요
+            지금, 디자인 자동화를 시작해보세요
           </motion.h2>
 
           {/* 서브카피 */}
@@ -776,8 +538,7 @@ export default function IdentiVis() {
           </motion.p>
 
           {/* CTA 버튼 */}
-          <motion.button
-            className="inline-flex items-center gap-2 bg-[#FF6B00] hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-medium transition"
+          <motion.div
             variants={{
               hidden: { opacity: 0, y: 20, scale: 0.9 },
               visible: { opacity: 1, y: 0, scale: 1 }
@@ -786,11 +547,14 @@ export default function IdentiVis() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            상담 시작하기
-          </motion.button>
+            <ContactDialog 
+              triggerText="상담 시작하기" 
+              buttonClassName="inline-flex items-center gap-2 bg-[#FF6B00] hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-medium transition"
+              icon={<svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>}
+            />
+          </motion.div>
         </motion.div>
       </section>
     </main>

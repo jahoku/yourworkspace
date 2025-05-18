@@ -1,9 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { MessageCircle } from 'lucide-react'
+import ContactDialog from '@/components/contact-dialog'
 
 export function ContactSection() {
   return (
@@ -24,16 +23,13 @@ export function ContactSection() {
             <br />
             전문 컨설턴트가 가장 적합한 방향을 제안해드립니다.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="inline-flex items-center justify-center px-6 py-3 max-w-[280px] rounded-full bg-[#FF6B1A] hover:bg-[#E95E0D] text-white text-base font-semibold transition-all duration-300"
-          >
-            <Link href="#">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              ConversAI로 상담 시작하기
-            </Link>
-          </Button>
+          <div className="flex justify-center mt-8">
+            <ContactDialog 
+              triggerText="ConversAI로 상담 시작하기" 
+              buttonClassName="inline-flex items-center justify-center px-6 py-3 max-w-[280px] rounded-full bg-[#FF6B1A] hover:bg-[#E95E0D] text-white text-base font-semibold transition-all duration-300"
+              icon={<MessageCircle className="w-5 h-5 mr-2" />}
+            />
+          </div>
         </motion.div>
       </div>
     </section>

@@ -8,6 +8,8 @@ import { useInView } from 'react-intersection-observer'
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { MessageCircle } from 'lucide-react'
+import ContactDialog from '@/components/contact-dialog'
 
 // Components
 const features = [
@@ -724,8 +726,7 @@ export default function AutoPageAI() {
           </motion.p>
 
           {/* CTA 버튼 */}
-          <motion.button
-            className="inline-flex items-center gap-2 bg-[#FF6B00] hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-medium transition"
+          <motion.div
             variants={{
               hidden: { opacity: 0, y: 20, scale: 0.9 },
               visible: { opacity: 1, y: 0, scale: 1 }
@@ -734,11 +735,14 @@ export default function AutoPageAI() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            상담 시작하기
-          </motion.button>
+            <ContactDialog 
+              triggerText="상담 시작하기" 
+              buttonClassName="inline-flex items-center gap-2 bg-[#FF6B00] hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-medium transition"
+              icon={<svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>}
+            />
+          </motion.div>
         </motion.div>
       </section>
     </main>

@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import { GNB } from '@/components/GNB'
 import { HeroSection } from '@/components/sections/HeroSection'
@@ -12,7 +14,7 @@ export default function LandingPage() {
   return (
     <>
       <GNB />
-      <main className="min-h-screen">
+      <main>
         <HeroSection />
         <SolutionsSection />
         <ProductivitySection />

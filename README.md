@@ -19,6 +19,22 @@ bun dev
 
 `app/page.tsx` 파일을 수정하여 페이지를 편집할 수 있습니다. 파일을 수정하면 자동으로 페이지가 업데이트됩니다.
 
+## 문의하기 폼 설정
+
+문의하기 기능을 사용하기 위해 `.env` 파일에 SMTP 설정을 추가해야 합니다:
+
+```
+# SMTP Configuration for Contact Form
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_username
+SMTP_PASSWORD=your_password
+SMTP_FROM=website@frameout.co.kr
+```
+
+`/contact` 경로에서 문의하기 폼을 확인할 수 있으며, nodemailer를 사용하여 이메일로 문의 내용이 전송됩니다. 현재 문의 내용은 `axc@frameout.co.kr`로 전송됩니다.
+
 ## 기본 포함 라이브러리
 
 - [Next.js](https://nextjs.org)
