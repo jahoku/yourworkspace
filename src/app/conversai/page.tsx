@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { Bot, Sparkles, ChartBarIcon, Paintbrush, Search, FileEdit, CodeIcon, Smartphone, Rocket, ArrowRightLeft, Users, Laptop, TrendingUp, Clock, Palette, XCircle, AlertTriangle, Ban, ListX, Phone, Shield, Database, RefreshCw, GitBranch, Globe, Cloud } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -9,6 +10,37 @@ import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import ContactDialog from '@/components/contact-dialog'
+import JsonLd from '@/components/JsonLd'
+
+// ConversAI Schema
+const conversAISchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'ConversAI',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'KRW',
+    availability: 'https://schema.org/OnlineOnly'
+  },
+  description: '고객 응대부터 내부 커뮤니케이션까지 다양한 채널에서 활용 가능한 AI 커뮤니케이션 도구.',
+  url: 'https://www.frameout.co.kr/conversai',
+  author: {
+    '@type': 'Organization',
+    name: '프레임아웃',
+    url: 'https://www.frameout.co.kr'
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.7',
+    ratingCount: '98',
+    bestRating: '5',
+    worstRating: '1'
+  },
+  featureList: 'AI 커뮤니케이션, 고객 응대 자동화, 내부 커뮤니케이션, 자연어 처리, 음성 텍스트 변환'
+};
 
 // Components
 const features = [
@@ -115,7 +147,9 @@ export default function ConversAI() {
   }
 
   return (
-    <main className="pt-16 flex flex-col min-h-screen bg-white">
+    <React.Fragment>
+      <JsonLd data={conversAISchema} />
+      <main className="pt-16 flex flex-col min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-[#F9FAFB] py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -622,5 +656,6 @@ export default function ConversAI() {
         </motion.div>
       </section>
     </main>
+    </React.Fragment>
   )
 } 

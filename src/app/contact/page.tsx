@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react'
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,6 +15,28 @@ import { Upload, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import PrivacyPolicyDialog from "@/components/privacy-policy-dialog";
 import { GNB } from "@/components/GNB";
+import JsonLd from "@/components/JsonLd";
+
+// Contact Page Schema
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: '프레임아웃 | AI 솔루션 문의하기',
+  description: '프레임아웃의 AI 솔루션에 대해 궁금하신 점이 있으신가요? 지금 바로 문의해주세요.',
+  url: 'https://www.frameout.co.kr/contact',
+  mainEntity: {
+    '@type': 'Organization',
+    name: '프레임아웃',
+    email: 'contact@frameout.co.kr',
+    url: 'https://www.frameout.co.kr',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: 'contact@frameout.co.kr',
+      url: 'https://www.frameout.co.kr/contact'
+    }
+  }
+};
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "이름을 입력해주세요." }),
@@ -89,149 +112,152 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
-      {/* GNB */}
-      <GNB />
+    <React.Fragment>
+      <JsonLd data={contactPageSchema} />
+      <div className="flex min-h-screen flex-col bg-black text-white">
+        {/* GNB */}
+        <GNB />
 
-      {/* 콘텐츠 */}
-      <div className="mt-16 flex flex-1 items-center justify-center">
-        <div className="container max-w-2xl p-8">
-          <div className="mb-6 flex items-center">
-            <Link href="/" className="flex items-center text-gray-400 hover:text-white">
-              <ArrowLeft size={16} className="mr-2" />
-              <span>돌아가기</span>
-            </Link>
-          </div>
+        {/* 콘텐츠 */}
+        <div className="mt-16 flex flex-1 items-center justify-center">
+          <div className="container max-w-2xl p-8">
+            <div className="mb-6 flex items-center">
+              <Link href="/" className="flex items-center text-gray-400 hover:text-white">
+                <ArrowLeft size={16} className="mr-2" />
+                <span>돌아가기</span>
+              </Link>
+            </div>
+            
+            <h1 className="mb-6 text-2xl font-bold">앞으로의 가능성을 함께 열어갑니다!</h1>
           
-          <h1 className="mb-6 text-2xl font-bold">앞으로의 가능성을 함께 열어갑니다!</h1>
-          
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Name *</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="" 
-                        {...field} 
-                        className="border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0" 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="company"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Company *</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="" 
-                        {...field} 
-                        className="border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0" 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Email *</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="" 
-                        {...field} 
-                        className="border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0" 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">문의사항 *</FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder="" 
-                        {...field} 
-                        className="min-h-32 border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <div className="space-y-2">
-                <p className="text-sm text-gray-400">참고자료가 있다면 첨부해주세요</p>
-                <div className="flex items-center gap-2">
-                  <label 
-                    htmlFor="file-upload" 
-                    className="flex cursor-pointer items-center gap-2 rounded border border-gray-600 px-3 py-2 text-sm text-white hover:bg-gray-900"
-                  >
-                    <Upload size={16} />
-                    파일선택
-                  </label>
-                  <input
-                    id="file-upload"
-                    type="file"
-                    className="hidden"
-                    onChange={handleFileChange}
-                  />
-                  {file && <span className="text-sm text-gray-400">{file.name}</span>}
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Name *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="" 
+                          {...field} 
+                          className="border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Company *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="" 
+                          {...field} 
+                          className="border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Email *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="" 
+                          {...field} 
+                          className="border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">문의사항 *</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="" 
+                          {...field} 
+                          className="min-h-32 border-0 border-b border-gray-600 bg-transparent py-2 text-white focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-400">참고자료가 있다면 첨부해주세요</p>
+                  <div className="flex items-center gap-2">
+                    <label 
+                      htmlFor="file-upload" 
+                      className="flex cursor-pointer items-center gap-2 rounded border border-gray-600 px-3 py-2 text-sm text-white hover:bg-gray-900"
+                    >
+                      <Upload size={16} />
+                      파일선택
+                    </label>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      className="hidden"
+                      onChange={handleFileChange}
+                    />
+                    {file && <span className="text-sm text-gray-400">{file.name}</span>}
+                  </div>
                 </div>
-              </div>
-              
-              <FormField
-                control={form.control}
-                name="privacyAgreement"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        className="border-white data-[state=checked]:bg-red-500 data-[state=checked]:text-white"
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel className="text-sm text-gray-400">
-                        <PrivacyPolicyDialog />에 동의합니다 *
-                      </FormLabel>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full rounded-none bg-red-500 py-6 text-white hover:bg-red-600"
-              >
-                {isSubmitting ? "전송 중..." : "Send your message"}
-              </Button>
-            </form>
-          </Form>
+                
+                <FormField
+                  control={form.control}
+                  name="privacyAgreement"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          className="border-white data-[state=checked]:bg-red-500 data-[state=checked]:text-white"
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-sm text-gray-400">
+                          <PrivacyPolicyDialog />에 동의합니다 *
+                        </FormLabel>
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full rounded-none bg-red-500 py-6 text-white hover:bg-red-600"
+                >
+                  {isSubmitting ? "전송 중..." : "Send your message"}
+                </Button>
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 } 

@@ -106,3 +106,36 @@ easynext sentry
 # Google Adsense
 easynext adsense
 ```
+
+## Google Analytics 사용법
+
+이 프로젝트는 Google Analytics(GA4)가 설정되어 있습니다. 측정 ID: `G-TBPTHDME8J`
+
+### 페이지 추적
+페이지 추적은 자동으로 설정되어 있습니다.
+
+### 이벤트 추적
+이벤트를 추적하려면 다음과 같이 사용하세요:
+
+```javascript
+import { event } from './app/gtag';
+
+// 이벤트 추적
+event({
+  action: '버튼_클릭',
+  category: '사용자_상호작용',
+  label: '로그인_버튼',
+  value: 1
+});
+```
+
+## Sitemap 사용법
+
+이 프로젝트는 next-sitemap이 설정되어 있습니다.
+
+- `next build` 명령어 실행 후 자동으로 sitemap.xml과 robots.txt 파일이 생성됩니다.
+- 설정 파일은 프로젝트 루트의 `next-sitemap.config.js`에 있습니다.
+- 생성된 파일은 `public` 디렉토리에 저장됩니다.
+
+추가 설정이 필요한 경우 `next-sitemap.config.js` 파일을 수정하세요.
+자세한 내용은 [next-sitemap 공식 문서](https://github.com/iamvishnusankar/next-sitemap)를 참조하세요.

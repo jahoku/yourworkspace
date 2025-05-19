@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://workspace.ai.kr
+
+# Sitemaps
+Sitemap: https://workspace.ai.kr/sitemap.xml
