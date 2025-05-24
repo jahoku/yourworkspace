@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "setup": "cursor-talk-to-figma-mcp setup",
+    "socket": "cursor-talk-to-figma-mcp socket"
   },
   "dependencies": {
     "@hookform/resolvers": "^4",
@@ -30,6 +32,7 @@
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cursor-talk-to-figma-mcp": "^0.2.1",
     "date-fns": "^4",
     "es-toolkit": "^1",
     "framer-motion": "^11.18.2",
@@ -62,6 +65,7 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@types/bun": "latest"
   }
 }
