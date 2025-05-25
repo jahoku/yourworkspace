@@ -118,10 +118,10 @@ export default function ContactDialog({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className={buttonClassName}>
-          {icon}
+        <button className={buttonClassName}>
           {triggerText}
-        </Button>
+          {icon}
+        </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] bg-black text-white border-gray-800" hideCloseButton>
         <DialogHeader className="flex flex-row items-center justify-between">

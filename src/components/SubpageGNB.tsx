@@ -59,7 +59,7 @@ export function SubpageGNB() {
             ))}
             <Button
               asChild
-              className="bg-[#F26222] text-white hover:bg-black hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+              className="bg-black text-white hover:bg-[#F26222] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
             >
               <Link href="/contact">문의하기</Link>
             </Button>
@@ -120,7 +120,7 @@ export function SubpageGNB() {
               ))}
               <Button
                 asChild
-                className="w-full mt-2 bg-[#F26222] text-white hover:bg-black hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                className="w-full mt-2 bg-black text-white hover:bg-[#F26222] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full h-12 text-base"
               >
                 <Link href="/contact">문의하기</Link>
               </Button>

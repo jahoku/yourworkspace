@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, Variants } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { ChevronDown } from 'lucide-react'
 
 const containerVariants: Variants = {
   hidden: {},
@@ -26,8 +24,54 @@ const itemVariants: Variants = {
   },
 }
 
+const scrollIconVariants: Variants = {
+  animate: {
+    y: [0, 8, 0],
+    transition: {
+      duration: 2,
+      ease: "easeInOut",
+      repeat: Infinity,
+    },
+  },
+}
+
+const dotVariants: Variants = {
+  animate: {
+    y: [0, 16, 0],
+    transition: {
+      duration: 2,
+      ease: "easeInOut",
+      repeat: Infinity,
+      delay: 0.5,
+    },
+  },
+}
+
 export function HeroSection() {
   const [isVideoLoading, setIsVideoLoading] = useState(true)
+  const [displayText, setDisplayText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+  
+  const messages = ['Loading IX : Intelligent eXperience...']
+  const currentMessage = messages[Math.floor(currentIndex / 100) % messages.length]
+
+  useEffect(() => {
+    if (!isVideoLoading) return
+    
+    const timer = setInterval(() => {
+      setCurrentIndex(prev => prev + 1)
+      const messageIndex = Math.floor(currentIndex / 100) % messages.length
+      const charIndex = (currentIndex % 100) % (messages[messageIndex].length + 20)
+      
+      if (charIndex <= messages[messageIndex].length) {
+        setDisplayText(messages[messageIndex].slice(0, charIndex))
+      } else {
+        setDisplayText(messages[messageIndex])
+      }
+    }, 80)
+
+    return () => clearInterval(timer)
+  }, [currentIndex, isVideoLoading])
 
   const scrollToNextSection = () => {
     const nextSection = document.getElementById('solutions')
@@ -35,7 +79,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen lg:h-[900px] overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay
@@ -55,15 +99,33 @@ export function HeroSection() {
       {/* Loading Overlay */}
       {isVideoLoading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
-          <div className="relative h-10 w-10">
-            <div className="absolute inline-flex h-full w-full rounded-full bg-[#F26222] opacity-75 animate-ping" />
-            <div className="relative inline-flex rounded-full h-10 w-10 bg-[#F26222]" />
+          <div className="flex flex-col items-center space-y-6">
+            <div className="relative">
+              <img
+                src="/logos/frameout_ci.png"
+                alt="Frameout CI"
+                className="h-8 sm:h-12 object-contain"
+                style={{
+                  animation: 'breathe 2s ease-in-out infinite'
+                }}
+              />
+            </div>
+            <div className="relative flex items-center text-white text-xs sm:text-sm font-light px-4">
+              <span className="inline-block min-w-[200px] sm:min-w-[280px] text-left pl-4 sm:pl-8">
+                {displayText}
+              </span>
+              <span 
+                className="ml-1 text-white animate-pulse"
+              >
+                |
+              </span>
+            </div>
           </div>
         </div>
       )}
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-20 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[45%] sm:pt-[42%] lg:pt-[375px]">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -72,53 +134,83 @@ export function HeroSection() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-white leading-snug text-center max-w-[1080px] mx-auto"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-white leading-tight text-center max-w-[95%] sm:max-w-[90%] lg:max-w-none mx-auto"
+            style={{ 
+              fontFamily: 'Pretendard',
+              fontWeight: 700,
+              letterSpacing: '-0.8px sm:-1px lg:-1.44px',
+              lineHeight: '1.2'
+            }}
           >
-            <span className="block md:hidden">
+            <span className="block lg:hidden">
               마케팅과 디자인을 자동화하는<br />
-              <span className="whitespace-nowrap">가장 쉬운 AI 솔루션</span>
+              가장 쉬운 AI 솔루션
             </span>
-            <span className="hidden md:inline whitespace-nowrap">
+            <span className="hidden lg:inline whitespace-nowrap">
               마케팅과 디자인을 자동화하는 가장 쉬운 AI 솔루션
             </span>
           </motion.h1>
           
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg text-white font-medium mt-4"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-[28px] text-white font-normal mt-4 sm:mt-6 max-w-[95%] sm:max-w-[80%] lg:max-w-[637px] mx-auto"
+            style={{
+              fontFamily: 'Pretendard',
+              fontWeight: 400,
+              letterSpacing: '0px',
+              lineHeight: '1.3'
+            }}
           >
-            <span className="md:hidden">
-              콘텐츠 제작, 고객 응대, 디자인까지
-              <br />
-              <span className="whitespace-nowrap">한 번에 해결하세요.</span>
+            <span className="block lg:hidden">
+              콘텐츠 제작, 고객 응대, 디자인까지<br />
+              한 번에 해결하세요.
             </span>
-            <span className="hidden md:inline">
+            <span className="hidden lg:inline">
               콘텐츠 제작, 고객 응대, 디자인까지 — 한 번에 해결하세요.
             </span>
           </motion.p>
 
-          <motion.div
-            variants={itemVariants}
-            className="mt-6"
-          >
-            <Button
-              onClick={scrollToNextSection}
-              size="lg"
-              className="bg-[#F26222] hover:bg-[#F26222]/90 text-white px-8 py-6 text-lg"
-            >
-              더 알아보기
-            </Button>
-          </motion.div>
-
-          {/* Scroll Indicator */}
+          {/* Mouse Scroll Icon */}
           <motion.button
             onClick={scrollToNextSection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.5 }}
-            className="mt-10 flex justify-center text-white/80 hover:text-white transition-colors duration-300"
+            className="mt-16 sm:mt-24 lg:mt-48 flex justify-center text-white/80 hover:text-white transition-colors duration-300 cursor-pointer"
           >
-            <ChevronDown className="w-8 h-8 animate-bounce" />
+            <motion.div 
+              variants={scrollIconVariants}
+              animate="animate"
+              className="relative w-[28px] h-[42px] sm:w-[37px] sm:h-[56px]"
+            >
+              {/* Mouse Shape */}
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 37 56"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute inset-0"
+              >
+                <rect
+                  x="1"
+                  y="1"
+                  width="35"
+                  height="54"
+                  rx="17.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                />
+              </svg>
+              
+              {/* Animated Dot */}
+              <motion.div
+                variants={dotVariants}
+                animate="animate"
+                className="absolute left-1/2 top-[12px] transform -translate-x-1/2 w-1.5 h-3 bg-white rounded-full"
+              />
+            </motion.div>
           </motion.button>
         </motion.div>
       </div>

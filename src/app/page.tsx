@@ -18,8 +18,8 @@ export default function LandingPage() {
         <HeroSection />
         <SolutionsSection />
         <ProductivitySection />
-        <ClientsSection />
         <AboutSection />
+        <ClientsSection />
         <ContactSection />
         <Footer />
       </main>

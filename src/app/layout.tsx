@@ -1,12 +1,16 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { GA_MEASUREMENT_ID } from './gtag';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import JsonLd from '@/components/JsonLd';
 
 const inter = Inter({ subsets: ['latin'] });
+const dmSans = DM_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+});
 
 export const metadata: Metadata = {
   title: '프레임아웃 | AI 기반 디지털 혁신 솔루션',
@@ -127,7 +131,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${dmSans.variable}`}>
         {/* Organization Schema */}
         <JsonLd data={organizationSchema} />
         

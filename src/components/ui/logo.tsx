@@ -19,7 +19,7 @@ export function Logo({ variant = 'desktop', isScrolled = false, className }: Log
           !isMobile && (isScrolled ? "text-black" : "text-white"),
           !isMobile && "hover:text-[#F26222]"
         )}>
-          yourworkspace.ai
+          IXAgent
         </span>
         <div className="flex items-center gap-1 mt-0.5">
           <span className="text-xs text-muted-foreground">powered by</span>
