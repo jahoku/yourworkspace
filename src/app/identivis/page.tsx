@@ -144,8 +144,8 @@ export default function IdentiVis() {
       if (videoRef.current) {
         videoRef.current.play().catch(error => {
           console.error("Video playback failed:", error)
-          // Fallback for browsers that block autoplay
-          alert("비디오 자동 재생에 실패했습니다. 비디오 컨트롤을 사용하여 재생해주세요.")
+          // More user-friendly error handling
+          setIsVideoPlaying(false)
         })
       }
     }, 100)
@@ -1301,7 +1301,7 @@ export default function IdentiVis() {
                   {!isVideoPlaying && (
                     <>
                       <Image
-                        src="/images/autopageai-thumbnail.jpg"
+                        src="/images/identivis-thumbnail.jpg"
                         alt="IdentiVis Demo Video Thumbnail"
                         fill
                         className="object-cover w-full h-full rounded-[16px] sm:rounded-[24px] lg:rounded-[32px]"
@@ -1327,8 +1327,8 @@ export default function IdentiVis() {
                   {/* Video element */}
                   <video
                     ref={videoRef}
-                    src="/videos/autopageai.mp4"
-                    poster="/images/autopageai-thumbnail.jpg"
+                    src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/identivis-demo.mp4"
+                    poster="/images/identivis-thumbnail.jpg"
                     controls
                     preload="metadata"
                     playsInline

@@ -144,8 +144,8 @@ export default function AutoPageAI() {
       if (videoRef.current) {
         videoRef.current.play().catch(error => {
           console.error("Video playback failed:", error)
-          // Fallback for browsers that block autoplay
-          alert("비디오 자동 재생에 실패했습니다. 비디오 컨트롤을 사용하여 재생해주세요.")
+          // More user-friendly error handling
+          setIsVideoPlaying(false)
         })
       }
     }, 100)
@@ -1172,7 +1172,7 @@ export default function AutoPageAI() {
                 {/* Video element with poster for better initial load */}
                 <video
                   ref={videoRef}
-                  src="/videos/autopageai.mp4"
+                  src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/autopageai-demo.mp4"
                   poster="/images/autopageai-thumbnail.jpg"
                   controls
                   preload="metadata"

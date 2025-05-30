@@ -139,3 +139,26 @@ event({
 
 추가 설정이 필요한 경우 `next-sitemap.config.js` 파일을 수정하세요.
 자세한 내용은 [next-sitemap 공식 문서](https://github.com/iamvishnusankar/next-sitemap)를 참조하세요.
+
+## 비디오 파일 관리
+
+이 프로젝트는 대용량 비디오 파일을 Vercel Blob Storage에 저장하여 성능을 최적화합니다.
+
+### 비디오 업로드
+
+1. 환경 변수 설정:
+```bash
+# .env.local 파일에 추가
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
+```
+
+2. 비디오 파일 업로드:
+```bash
+npm run upload-videos
+```
+
+### 현재 사용 중인 비디오 URL
+- AutoPageAI 데모: `https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/autopageai-demo.mp4`
+- IdentiVis 데모: `https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/identivis-demo.mp4`
+- ConversAI 데모: `https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/conversai-demo.mp4`
+- Hero 배경: `https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/hero-bg.mp4`

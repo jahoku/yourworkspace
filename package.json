@@ -9,7 +9,9 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "setup": "cursor-talk-to-figma-mcp setup",
-    "socket": "cursor-talk-to-figma-mcp socket"
+    "socket": "cursor-talk-to-figma-mcp socket",
+    "upload-videos": "node scripts/upload-videos.js",
+    "upload-conversai": "node scripts/upload-conversai.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^4",

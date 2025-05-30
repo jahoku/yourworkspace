@@ -141,7 +141,11 @@ export default function ConversAI() {
     // Use setTimeout to ensure the video is visible before playing
     setTimeout(() => {
       if (videoRef.current) {
-        videoRef.current.play()
+        videoRef.current.play().catch(error => {
+          console.error("Video playback failed:", error)
+          // More user-friendly error handling
+          setIsVideoPlaying(false)
+        })
       }
     }, 100)
   }
@@ -1138,10 +1142,11 @@ export default function ConversAI() {
                 {/* Video element */}
                 <video
                   ref={videoRef}
-                  src="/videos/autopageai.mp4"
+                  src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/conversai-demo.mp4"
                   poster="/images/autopageai-thumbnail.jpg"
                   controls
                   preload="metadata"
+                  playsInline
                   className={isVideoPlaying ? "w-full h-full object-cover rounded-[32px]" : "hidden"}
                   id="demoVideo"
                 />
