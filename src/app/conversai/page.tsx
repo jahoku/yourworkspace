@@ -1222,7 +1222,7 @@ export default function ConversAI() {
               {/* Video element with poster for better initial load */}
               <video
                 ref={videoRef}
-                src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/autopageai-demo.mp4"
+                src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/conversai-demo.mp4"
                 poster="/images/conversai-thumbnail.png"
                 controls
                 preload="metadata"
