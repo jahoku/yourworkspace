@@ -153,9 +153,7 @@ export function GNB({ isVideoPlaying = false }: GNBProps) {
           <div className="pr-2 flex-shrink-0">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`transition-colors duration-300 ${
-                isVideoPlaying ? 'text-white' : (isScrolled ? 'text-black' : 'text-white')
-              } hover:text-black mr-6`}
+              className="text-black hover:text-black transition-colors duration-300 mr-6"
               style={{ marginRight: '24px' }}
               aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
             >
