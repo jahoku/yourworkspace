@@ -87,6 +87,7 @@ export function SolutionsSection() {
   return (
     <section id="solutions" className="bg-gray-50">
       {/* 상단 섹션 - 간단한 카드들 */}
+      {/* 
       <div className="pt-[100px] sm:pt-[130px] lg:pt-[160px] pb-[80px] sm:pb-[100px] lg:pb-[120px] px-4">
         <div className="max-w-[1200px] mx-auto">
           <motion.div
@@ -96,7 +97,6 @@ export function SolutionsSection() {
             variants={containerVariants}
             className="text-center"
           >
-            {/* 제목 섹션 */}
             <div className="flex flex-col justify-center mb-[40px] sm:mb-[50px] lg:mb-[60px]">
               <motion.h2 
                 variants={itemVariants}
@@ -112,7 +112,6 @@ export function SolutionsSection() {
               </motion.p>
             </div>
             
-            {/* 카드 섹션 */}
             <motion.div 
               variants={containerVariants}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px] sm:gap-[30px] lg:gap-[41px] max-w-[1200px] mx-auto"
@@ -125,7 +124,6 @@ export function SolutionsSection() {
                     index === 2 && 'sm:col-span-2 lg:col-span-1'
                   }`}
                 >
-                  {/* 로고 */}
                   <div className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] lg:w-[60px] lg:h-[60px] mb-[8px] sm:mb-[10px] lg:mb-[12px] flex items-center justify-center">
                     <Image
                       src={solution.logoImage}
@@ -135,7 +133,6 @@ export function SolutionsSection() {
                       className="object-contain w-full h-full"
                     />
                   </div>
-                  {/* 제목 텍스트 */}
                   <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-white leading-tight tracking-[-0.5px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] text-center font-pretendard">
                     {solution.title}
                   </h3>
@@ -145,6 +142,7 @@ export function SolutionsSection() {
           </motion.div>
         </div>
       </div>
+      */}
 
       {/* 하단 섹션 - 상세 설명 */}
       <div className="bg-[#1c1c1c] py-[80px] sm:py-[120px] lg:py-[160px] px-4">
@@ -221,7 +219,7 @@ export function SolutionsSection() {
                       src={solution.detailImage}
                       alt={solution.title}
                       fill
-                      className="object-contain p-4"
+                      className="object-contain"
                     />
                   </div>
                 </div>

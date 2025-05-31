@@ -1,21 +1,21 @@
 {
-  "name": "프레임아웃 | AI 기반 디지털 혁신 솔루션",
-  "short_name": "프레임아웃",
-  "description": "콘텐츠 제작, 고객 응대, 디자인까지 한 번에 해결하는 AI 솔루션",
+  "name": "AXC(AI eXperience Center) powered by frameout",
+  "short_name": "AXC",
+  "description": "AI 경험 센터 - 프레임아웃이 제공하는 차세대 AI 솔루션 체험 공간",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#ED1C24",
   "icons": [
     {
-      "src": "https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/68065252fe93a55e024bee86_favicon_32.png",
-      "sizes": "32x32",
-      "type": "image/png"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     },
     {
-      "src": "https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/6806525452232adc62c5e1df_favicon_256.png",
-      "sizes": "256x256",
-      "type": "image/png"
+      "src": "/favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
     }
   ]
 } 

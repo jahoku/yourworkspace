@@ -13,15 +13,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: '프레임아웃 | AI 기반 디지털 혁신 솔루션',
-  description: '콘텐츠 제작, 고객 응대, 디자인까지 한 번에 해결하는 AI 솔루션. 프레임아웃과 함께 디지털 혁신을 시작하세요.',
-  keywords: 'AI 솔루션, 디지털 혁신, 콘텐츠 자동화, 고객 응대, 디자인 자동화',
+  title: 'AXC(AI eXperience Center) powered by frameout',
+  description: 'AI 경험 센터 - 프레임아웃이 제공하는 차세대 AI 솔루션 체험 공간. 콘텐츠 제작, 고객 응대, 디자인 자동화를 직접 경험해보세요.',
+  keywords: 'AXC, AI Experience Center, AI 솔루션, 디지털 혁신, 콘텐츠 자동화, 고객 응대, 디자인 자동화, 프레임아웃',
   metadataBase: new URL('https://www.frameout.co.kr'),
   openGraph: {
-    title: '프레임아웃 | AI 기반 디지털 혁신 솔루션',
-    description: '콘텐츠 제작, 고객 응대, 디자인까지 한 번에 해결하는 AI 솔루션. 프레임아웃과 함께 디지털 혁신을 시작하세요.',
+    title: 'AXC(AI eXperience Center) powered by frameout',
+    description: 'AI 경험 센터 - 프레임아웃이 제공하는 차세대 AI 솔루션 체험 공간. 콘텐츠 제작, 고객 응대, 디자인 자동화를 직접 경험해보세요.',
     url: 'https://www.frameout.co.kr',
-    siteName: '프레임아웃',
+    siteName: 'AXC - AI eXperience Center',
     locale: 'ko_KR',
     type: 'website',
     images: [
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
         url: 'https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/6806526d24fb35d1e1ce6907_Open%20graph.png',
         width: 1200,
         height: 630,
-        alt: '프레임아웃 | AI 기반 디지털 혁신 솔루션',
+        alt: 'AXC(AI eXperience Center) powered by frameout',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '프레임아웃 | AI 기반 디지털 혁신 솔루션',
-    description: '콘텐츠 제작, 고객 응대, 디자인까지 한 번에 해결하는 AI 솔루션. 프레임아웃과 함께 디지털 혁신을 시작하세요.',
+    title: 'AXC(AI eXperience Center) powered by frameout',
+    description: 'AI 경험 센터 - 프레임아웃이 제공하는 차세대 AI 솔루션 체험 공간. 콘텐츠 제작, 고객 응대, 디자인 자동화를 직접 경험해보세요.',
     images: [
       'https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/6806526d24fb35d1e1ce6907_Open%20graph.png'
     ],
@@ -47,19 +47,19 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: 'https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/68065252fe93a55e024bee86_favicon_32.png', sizes: '32x32', type: 'image/png' },
-      { url: 'https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/6806525452232adc62c5e1df_favicon_256.png', sizes: '256x256', type: 'image/png' }
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' }
     ],
-    shortcut: 'https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/68065252fe93a55e024bee86_favicon_32.png',
-    apple: 'https://cdn.prod.website-files.com/67dd4681b20d47ddbc64c059/6806525452232adc62c5e1df_favicon_256.png',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   manifest: '/manifest.json',
   appleWebApp: {
-    title: '프레임아웃',
+    title: 'AXC',
     statusBarStyle: 'black-translucent',
     capable: true,
   },
-  applicationName: '프레임아웃',
+  applicationName: 'AXC - AI eXperience Center',
   formatDetection: {
     telephone: true,
     email: true,

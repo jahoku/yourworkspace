@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, Variants } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 
 const containerVariants: Variants = {
   hidden: {},
@@ -47,10 +48,15 @@ const dotVariants: Variants = {
   },
 }
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onVideoStateChange?: (isPlaying: boolean) => void
+}
+
+export function HeroSection({ onVideoStateChange }: HeroSectionProps) {
   const [isVideoLoading, setIsVideoLoading] = useState(true)
   const [displayText, setDisplayText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [videoError, setVideoError] = useState(false)
   
   const messages = ['Loading IX : Intelligent eXperience...']
   const currentMessage = messages[Math.floor(currentIndex / 100) % messages.length]
@@ -73,6 +79,53 @@ export function HeroSection() {
     return () => clearInterval(timer)
   }, [currentIndex, isVideoLoading])
 
+  // 최대 로딩 시간 설정 (개발 환경에서는 1초, 프로덕션에서는 3초로 단축)
+  useEffect(() => {
+    const isDevelopment = process.env.NODE_ENV === 'development'
+    const maxLoadingTime = isDevelopment ? 1000 : 3000
+    
+    const maxLoadingTimer = setTimeout(() => {
+      if (isVideoLoading) {
+        console.log('Video loading timeout, proceeding with fallback')
+        setIsVideoLoading(false)
+        onVideoStateChange?.(false)
+      }
+    }, maxLoadingTime)
+
+    return () => clearTimeout(maxLoadingTimer)
+  }, [isVideoLoading, onVideoStateChange])
+
+  // 개발 환경에서 빠른 스킵을 위한 키보드 이벤트
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === ' ') {
+        setIsVideoLoading(false)
+        onVideoStateChange?.(false)
+      }
+    }
+
+    if (isVideoLoading) {
+      window.addEventListener('keydown', handleKeyPress)
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [isVideoLoading, onVideoStateChange])
+
+  const handleVideoLoad = () => {
+    console.log('Video loaded successfully')
+    setIsVideoLoading(false)
+    onVideoStateChange?.(true)
+  }
+
+  const handleVideoError = () => {
+    console.log('Video failed to load, proceeding with fallback')
+    setVideoError(true)
+    setIsVideoLoading(false)
+    onVideoStateChange?.(false)
+  }
+
   const scrollToNextSection = () => {
     const nextSection = document.getElementById('solutions')
     nextSection?.scrollIntoView({ behavior: 'smooth' })
@@ -81,19 +134,33 @@ export function HeroSection() {
   return (
     <section className="relative h-screen lg:h-[900px] overflow-hidden">
       {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        onLoadedData={() => setIsVideoLoading(false)}
-        onCanPlay={() => setIsVideoLoading(false)}
-      >
-        <source src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/hero-bg.mp4" type="video/mp4" />
-      </video>
+      {!videoError && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          onLoadedData={handleVideoLoad}
+          onCanPlay={handleVideoLoad}
+          onError={handleVideoError}
+          onLoadStart={() => console.log('Video loading started')}
+          onPlay={() => console.log('Video started playing')}
+          onPause={() => console.log('Video paused')}
+          onWaiting={() => console.log('Video waiting for data')}
+          onStalled={() => console.log('Video stalled')}
+        >
+          <source src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/hero-bg.mp4" type="video/mp4" />
+        </video>
+      )}
 
-      {/* Dark Overlay */}
+      {/* Fallback Background - 단순한 회색 배경 */}
+      {videoError && (
+        <div className="absolute inset-0 bg-gray-800 z-0" />
+      )}
+
+      {/* Dark Overlay - 원래대로 복원 */}
       <div className="absolute inset-0 bg-black/50 z-10" />
 
       {/* Loading Overlay */}
@@ -108,6 +175,10 @@ export function HeroSection() {
                 style={{
                   animation: 'breathe 2s ease-in-out infinite'
                 }}
+                onError={(e) => {
+                  console.log('Logo image failed to load')
+                  e.currentTarget.style.display = 'none'
+                }}
               />
             </div>
             <div className="relative flex items-center text-white text-xs sm:text-sm font-light px-4">
@@ -120,12 +191,16 @@ export function HeroSection() {
                 |
               </span>
             </div>
+            {/* Skip instruction */}
+            <div className="absolute bottom-8 text-white/60 text-xs text-center">
+              <p>Press ESC or SPACE to skip</p>
+            </div>
           </div>
         </div>
       )}
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[45%] sm:pt-[42%] lg:pt-[375px]">
+      <div className="relative z-20 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[40%] sm:pt-[35%] md:pt-[38%] lg:pt-[375px]">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -134,11 +209,11 @@ export function HeroSection() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold text-white leading-tight text-center max-w-[95%] sm:max-w-[90%] lg:max-w-none mx-auto"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-bold text-white leading-tight text-center max-w-[95%] sm:max-w-[90%] lg:max-w-none mx-auto"
             style={{ 
               fontFamily: 'Pretendard',
               fontWeight: 700,
-              letterSpacing: '-0.8px sm:-1px lg:-1.44px',
+              letterSpacing: '-0.6px sm:-0.8px md:-1px lg:-1.44px',
               lineHeight: '1.2'
             }}
           >
@@ -153,7 +228,7 @@ export function HeroSection() {
           
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-[28px] text-white font-normal mt-4 sm:mt-6 max-w-[95%] sm:max-w-[80%] lg:max-w-[637px] mx-auto"
+            className="text-lg sm:text-xl md:text-2xl lg:text-[28px] text-white font-normal mt-3 sm:mt-4 lg:mt-6 max-w-[95%] sm:max-w-[80%] lg:max-w-[637px] mx-auto"
             style={{
               fontFamily: 'Pretendard',
               fontWeight: 400,
@@ -169,51 +244,51 @@ export function HeroSection() {
               콘텐츠 제작, 고객 응대, 디자인까지 — 한 번에 해결하세요.
             </span>
           </motion.p>
-
-          {/* Mouse Scroll Icon */}
-          <motion.button
-            onClick={scrollToNextSection}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-            className="mt-16 sm:mt-24 lg:mt-48 flex justify-center text-white/80 hover:text-white transition-colors duration-300 cursor-pointer"
-          >
-            <motion.div 
-              variants={scrollIconVariants}
-              animate="animate"
-              className="relative w-[28px] h-[42px] sm:w-[37px] sm:h-[56px]"
-            >
-              {/* Mouse Shape */}
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 37 56"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute inset-0"
-              >
-                <rect
-                  x="1"
-                  y="1"
-                  width="35"
-                  height="54"
-                  rx="17.5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </svg>
-              
-              {/* Animated Dot */}
-              <motion.div
-                variants={dotVariants}
-                animate="animate"
-                className="absolute left-1/2 top-[12px] transform -translate-x-1/2 w-1.5 h-3 bg-white rounded-full"
-              />
-            </motion.div>
-          </motion.button>
         </motion.div>
       </div>
+      
+      {/* Mouse Scroll Icon - 별도 위치 */}
+      <motion.button
+        onClick={scrollToNextSection}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex justify-center text-white/80 hover:text-white transition-colors duration-300 cursor-pointer"
+      >
+        <motion.div 
+          variants={scrollIconVariants}
+          animate="animate"
+          className="relative w-[28px] h-[42px] sm:w-[37px] sm:h-[56px]"
+        >
+          {/* Mouse Shape */}
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 37 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute inset-0"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="35"
+              height="54"
+              rx="17.5"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+            />
+          </svg>
+          
+          {/* Animated Dot */}
+          <motion.div
+            variants={dotVariants}
+            animate="animate"
+            className="absolute left-1/2 top-[12px] transform -translate-x-1/2 w-1.5 h-3 bg-white rounded-full"
+          />
+        </motion.div>
+      </motion.button>
     </section>
   )
 } 

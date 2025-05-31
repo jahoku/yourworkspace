@@ -30,15 +30,15 @@ export function ProductivitySection() {
         {/* Content Grid */}
         <div className="max-w-[1200px] mx-auto">
           {/* Mobile Layout - Single Column */}
-          <div className="block lg:hidden space-y-[16px] sm:space-y-[20px]">
+          <div className="block lg:hidden space-y-[12px] sm:space-y-[16px]">
             {/* 업무시간 단축 */}
             <motion.div 
-              className="bg-[#f2f4fd] rounded-[20px] sm:rounded-[25px] p-[30px] sm:p-[40px]"
+              className="bg-[#f2f4fd] rounded-[18px] sm:rounded-[20px] p-[24px] sm:p-[30px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="mb-[40px] sm:mb-[50px]">
+              <div className="mb-[32px] sm:mb-[40px]">
                 {isInView && (
                   <motion.div
                     className="flex items-end gap-[2px]"
@@ -72,12 +72,12 @@ export function ProductivitySection() {
 
             {/* 콘텐츠 제작 효율 */}
             <motion.div 
-              className="bg-[#f2f4fd] rounded-[20px] sm:rounded-[25px] p-[30px] sm:p-[40px]"
+              className="bg-[#f2f4fd] rounded-[18px] sm:rounded-[20px] p-[24px] sm:p-[30px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="mb-[40px] sm:mb-[50px]">
+              <div className="mb-[32px] sm:mb-[40px]">
                 {isInView && (
                   <motion.div
                     className="flex items-end gap-[2px]"
@@ -111,12 +111,12 @@ export function ProductivitySection() {
 
             {/* 디자인 리드타임 단축 */}
             <motion.div 
-              className="bg-[#f2f4fd] rounded-[20px] sm:rounded-[25px] p-[30px] sm:p-[40px]"
+              className="bg-[#f2f4fd] rounded-[18px] sm:rounded-[20px] p-[24px] sm:p-[30px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="mb-[40px] sm:mb-[50px]">
+              <div className="mb-[32px] sm:mb-[40px]">
                 {isInView && (
                   <motion.div
                     className="flex items-end gap-[2px]"
@@ -150,12 +150,12 @@ export function ProductivitySection() {
 
             {/* 즉각적인 응답 처리 */}
             <motion.div 
-              className="bg-[#f2f4fd] rounded-[20px] sm:rounded-[25px] p-[30px] sm:p-[40px]"
+              className="bg-[#f2f4fd] rounded-[18px] sm:rounded-[20px] p-[24px] sm:p-[30px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="mb-[40px] sm:mb-[50px]">
+              <div className="mb-[32px] sm:mb-[40px]">
                 {isInView && (
                   <motion.div
                     className="flex items-end gap-[2px]"

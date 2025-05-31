@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { useState } from 'react'
 import { GNB } from '@/components/GNB'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { SolutionsSection } from '@/components/sections/SolutionsSection'
@@ -11,11 +11,13 @@ import { ContactSection } from '@/components/sections/ContactSection'
 import { Footer } from '@/components/sections/Footer'
 
 export default function LandingPage() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+
   return (
     <>
-      <GNB />
+      <GNB isVideoPlaying={isVideoPlaying} />
       <main>
-        <HeroSection />
+        <HeroSection onVideoStateChange={setIsVideoPlaying} />
         <SolutionsSection />
         <ProductivitySection />
         <AboutSection />

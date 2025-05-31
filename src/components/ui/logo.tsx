@@ -11,23 +11,35 @@ export function Logo({ variant = 'desktop', isScrolled = false, className }: Log
   const isMobile = variant === 'mobile'
   
   return (
-    <div className={cn("flex flex-col items-start justify-center", className)}>
-      <Link href="/" className="flex flex-col items-start">
+    <div className={cn("flex flex-col items-center justify-center text-center", className)}>
+      <Link href="/" className="flex flex-col items-center group">
         <span className={cn(
-          "font-bold leading-tight transition-colors duration-300",
-          isMobile ? "text-xl text-black" : "text-xl md:text-2xl",
-          !isMobile && (isScrolled ? "text-black" : "text-white"),
-          !isMobile && "hover:text-[#F26222]"
+          "font-bold transition-colors duration-300 leading-none",
+          isMobile ? "text-xl text-[#F26222] group-hover:text-black" : "text-2xl md:text-3xl text-[#F26222] group-hover:text-black"
         )}>
-          IXAgent
+          AXC
         </span>
-        <div className="flex items-center gap-1 mt-0.5">
-          <span className="text-xs text-muted-foreground">powered by</span>
-          <img
-            src="/logos/frameout_ci_black.png"
-            alt="Frameout CI"
-            className="h-3 object-contain"
-          />
+        <span className={cn(
+          "transition-colors duration-300 leading-none -mt-1",
+          isMobile ? "text-sm text-[#F26222] group-hover:text-black" : "text-base md:text-lg text-[#F26222] group-hover:text-black"
+        )}>
+          (AI eXperience Center)
+        </span>
+        <div className="flex flex-col items-center mt-1">
+          <span className={cn(
+            "transition-colors duration-300",
+            isMobile ? "text-xs text-gray-500" : "text-xs",
+            isMobile ? "" : isScrolled ? "text-gray-500" : "text-gray-400"
+          )}>
+            powered by
+          </span>
+          <span className={cn(
+            "font-medium transition-colors duration-300",
+            isMobile ? "text-xs text-black" : "text-sm",
+            isMobile ? "" : isScrolled ? "text-black" : "text-white"
+          )}>
+            frameout
+          </span>
         </div>
       </Link>
     </div>

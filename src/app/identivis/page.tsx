@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Bot, Sparkles, ChartBarIcon, Paintbrush, Search, FileEdit, CodeIcon, Smartphone, Rocket, ArrowRightLeft, Users, Laptop, TrendingUp, Clock, Palette, XCircle } from 'lucide-react'
+import { Bot, Sparkles, ChartBarIcon, Paintbrush, Search, FileEdit, CodeIcon, Smartphone, Rocket, ArrowRightLeft, Users, Laptop, TrendingUp, Clock, Palette, XCircle, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -157,7 +157,7 @@ export default function IdentiVis() {
       <main className="pt-16 flex flex-col min-h-screen bg-white">
         {/* Hero Section */}
         <section 
-          className="relative h-[350px] sm:h-[400px] lg:h-[450px] bg-black flex items-center justify-center"
+          className="relative h-[450px] sm:h-[450px] lg:h-[450px] bg-black flex items-center justify-center mt-8 sm:mt-12 md:mt-20 lg:mt-28"
           style={{
             backgroundImage: 'url(/images/IdentiVis_visual.png)',
             backgroundSize: 'cover',
@@ -475,7 +475,7 @@ export default function IdentiVis() {
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.6 }}
               >
-                브랜드 스타일, 이렇게 자동화됩니다
+                브랜드 스타일, <br className="block sm:hidden" />이렇게 자동화됩니다
               </motion.h2>
             </div>
 
@@ -502,42 +502,83 @@ export default function IdentiVis() {
                 
                 {/* Content */}
                 <div className="w-full lg:w-[550px] flex flex-col">
-                  {/* Badge */}
-                  <div 
-                    className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
-                    style={{
-                      backgroundColor: '#e6f6ff',
-                      border: '1px solid #bde2f2',
-                      padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
-                    }}
-                  >
-                    <span 
-                      className="text-[#4c9dc0]"
-                      style={{
-                        fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 16px)',
-                        fontWeight: 700,
-                        letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
-                        lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
-                      }}
-                    >
-                      STEP 1
-                    </span>
+                  {/* Badge and Title - Mobile: inline, Desktop: separate */}
+                  <div className="flex flex-col sm:flex-col lg:flex-col">
+                    {/* Mobile: Badge + Title in one line */}
+                    <div className="flex items-center gap-3 mb-3 sm:hidden">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 1
+                        </span>
+                      </div>
+                      <h3 
+                        className="text-[#333333] text-left"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        브랜드 자산 학습
+                      </h3>
+                    </div>
+
+                    {/* Desktop: Badge and Title separate */}
+                    <div className="hidden sm:block">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 1
+                        </span>
+                      </div>
+                      
+                      <h3 
+                        className="text-[#333333] text-left mb-3 sm:mb-4"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        브랜드 자산 학습
+                      </h3>
+                    </div>
                   </div>
-                  
-                  {/* Title */}
-                  <h3 
-                    className="text-[#333333] text-left mb-3 sm:mb-4"
-                    style={{
-                      fontFamily: 'Pretendard, sans-serif',
-                      fontSize: 'clamp(22px, 4vw, 28px)',
-                      fontWeight: 700,
-                      letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
-                      lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
-                    }}
-                  >
-                    브랜드 자산 학습
-                  </h3>
                   
                   {/* Description */}
                   <p 
@@ -583,42 +624,83 @@ export default function IdentiVis() {
                 
                 {/* Content */}
                 <div className="w-full lg:w-[550px] flex flex-col">
-                  {/* Badge */}
-                  <div 
-                    className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
-                    style={{
-                      backgroundColor: '#e6f6ff',
-                      border: '1px solid #bde2f2',
-                      padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
-                    }}
-                  >
-                    <span 
-                      className="text-[#4c9dc0]"
-                      style={{
-                        fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 16px)',
-                        fontWeight: 700,
-                        letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
-                        lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
-                      }}
-                    >
-                      STEP 2
-                    </span>
+                  {/* Badge and Title - Mobile: inline, Desktop: separate */}
+                  <div className="flex flex-col sm:flex-col lg:flex-col">
+                    {/* Mobile: Badge + Title in one line */}
+                    <div className="flex items-center gap-3 mb-3 sm:hidden">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 2
+                        </span>
+                      </div>
+                      <h3 
+                        className="text-[#333333] text-left"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        스타일 및 형식 선택
+                      </h3>
+                    </div>
+
+                    {/* Desktop: Badge and Title separate */}
+                    <div className="hidden sm:block">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 2
+                        </span>
+                      </div>
+                      
+                      <h3 
+                        className="text-[#333333] text-left mb-3 sm:mb-4"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        스타일 및 형식 선택
+                      </h3>
+                    </div>
                   </div>
-                  
-                  {/* Title */}
-                  <h3 
-                    className="text-[#333333] text-left mb-3 sm:mb-4"
-                    style={{
-                      fontFamily: 'Pretendard, sans-serif',
-                      fontSize: 'clamp(22px, 4vw, 28px)',
-                      fontWeight: 700,
-                      letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
-                      lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
-                    }}
-                  >
-                    스타일 및 형식 선택
-                  </h3>
                   
                   {/* Description */}
                   <p 
@@ -663,42 +745,83 @@ export default function IdentiVis() {
                 
                 {/* Content */}
                 <div className="w-full lg:w-[550px] flex flex-col">
-                  {/* Badge */}
-                  <div 
-                    className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
-                    style={{
-                      backgroundColor: '#e6f6ff',
-                      border: '1px solid #bde2f2',
-                      padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
-                    }}
-                  >
-                    <span 
-                      className="text-[#4c9dc0]"
-                      style={{
-                        fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 16px)',
-                        fontWeight: 700,
-                        letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
-                        lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
-                      }}
-                    >
-                      STEP 3
-                    </span>
+                  {/* Badge and Title - Mobile: inline, Desktop: separate */}
+                  <div className="flex flex-col sm:flex-col lg:flex-col">
+                    {/* Mobile: Badge + Title in one line */}
+                    <div className="flex items-center gap-3 mb-3 sm:hidden">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 3
+                        </span>
+                      </div>
+                      <h3 
+                        className="text-[#333333] text-left"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        프롬프트 입력
+                      </h3>
+                    </div>
+
+                    {/* Desktop: Badge and Title separate */}
+                    <div className="hidden sm:block">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 3
+                        </span>
+                      </div>
+                      
+                      <h3 
+                        className="text-[#333333] text-left mb-3 sm:mb-4"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        프롬프트 입력
+                      </h3>
+                    </div>
                   </div>
-                  
-                  {/* Title */}
-                  <h3 
-                    className="text-[#333333] text-left mb-3 sm:mb-4"
-                    style={{
-                      fontFamily: 'Pretendard, sans-serif',
-                      fontSize: 'clamp(22px, 4vw, 28px)',
-                      fontWeight: 700,
-                      letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
-                      lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
-                    }}
-                  >
-                    프롬프트 입력
-                  </h3>
                   
                   {/* Description */}
                   <p 
@@ -737,42 +860,83 @@ export default function IdentiVis() {
                 
                 {/* Content */}
                 <div className="w-full lg:w-[550px] flex flex-col">
-                  {/* Badge */}
-                  <div 
-                    className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
-                    style={{
-                      backgroundColor: '#e6f6ff',
-                      border: '1px solid #bde2f2',
-                      padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
-                    }}
-                  >
-                    <span 
-                      className="text-[#4c9dc0]"
-                      style={{
-                        fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 16px)',
-                        fontWeight: 700,
-                        letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
-                        lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
-                      }}
-                    >
-                      STEP 4
-                    </span>
+                  {/* Badge and Title - Mobile: inline, Desktop: separate */}
+                  <div className="flex flex-col sm:flex-col lg:flex-col">
+                    {/* Mobile: Badge + Title in one line */}
+                    <div className="flex items-center gap-3 mb-3 sm:hidden">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 4
+                        </span>
+                      </div>
+                      <h3 
+                        className="text-[#333333] text-left"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        AI 자동 생성 + 스타일 적용
+                      </h3>
+                    </div>
+
+                    {/* Desktop: Badge and Title separate */}
+                    <div className="hidden sm:block">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 4
+                        </span>
+                      </div>
+                      
+                      <h3 
+                        className="text-[#333333] text-left mb-3 sm:mb-4"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        AI 자동 생성 + 스타일 적용
+                      </h3>
+                    </div>
                   </div>
-                  
-                  {/* Title */}
-                  <h3 
-                    className="text-[#333333] text-left mb-3 sm:mb-4"
-                    style={{
-                      fontFamily: 'Pretendard, sans-serif',
-                      fontSize: 'clamp(22px, 4vw, 28px)',
-                      fontWeight: 700,
-                      letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
-                      lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
-                    }}
-                  >
-                    AI 자동 생성 + 스타일 적용
-                  </h3>
                   
                   {/* Description */}
                   <p 
@@ -818,42 +982,83 @@ export default function IdentiVis() {
                 
                 {/* Content */}
                 <div className="w-full lg:w-[550px] flex flex-col">
-                  {/* Badge */}
-                  <div 
-                    className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
-                    style={{
-                      backgroundColor: '#e6f6ff',
-                      border: '1px solid #bde2f2',
-                      padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
-                    }}
-                  >
-                    <span 
-                      className="text-[#4c9dc0]"
-                      style={{
-                        fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 16px)',
-                        fontWeight: 700,
-                        letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
-                        lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
-                      }}
-                    >
-                      STEP 5
-                    </span>
+                  {/* Badge and Title - Mobile: inline, Desktop: separate */}
+                  <div className="flex flex-col sm:flex-col lg:flex-col">
+                    {/* Mobile: Badge + Title in one line */}
+                    <div className="flex items-center gap-3 mb-3 sm:hidden">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 5
+                        </span>
+                      </div>
+                      <h3 
+                        className="text-[#333333] text-left"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        결과물 다운로드 또는 편집
+                      </h3>
+                    </div>
+
+                    {/* Desktop: Badge and Title separate */}
+                    <div className="hidden sm:block">
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full self-start mb-6 sm:mb-8 lg:mb-8"
+                        style={{
+                          backgroundColor: '#e6f6ff',
+                          border: '1px solid #bde2f2',
+                          padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'
+                        }}
+                      >
+                        <span 
+                          className="text-[#4c9dc0]"
+                          style={{
+                            fontFamily: 'Pretendard, sans-serif',
+                            fontSize: 'clamp(14px, 2.5vw, 16px)',
+                            fontWeight: 700,
+                            letterSpacing: 'clamp(-0.42px, -0.03em, -0.48px)',
+                            lineHeight: 'clamp(13.3px, 0.95em, 15.2px)'
+                          }}
+                        >
+                          STEP 5
+                        </span>
+                      </div>
+                      
+                      <h3 
+                        className="text-[#333333] text-left mb-3 sm:mb-4"
+                        style={{
+                          fontFamily: 'Pretendard, sans-serif',
+                          fontSize: 'clamp(22px, 4vw, 28px)',
+                          fontWeight: 700,
+                          letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
+                          lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
+                        }}
+                      >
+                        결과물 다운로드 또는 편집
+                      </h3>
+                    </div>
                   </div>
-                  
-                  {/* Title */}
-                  <h3 
-                    className="text-[#333333] text-left mb-3 sm:mb-4"
-                    style={{
-                      fontFamily: 'Pretendard, sans-serif',
-                      fontSize: 'clamp(22px, 4vw, 28px)',
-                      fontWeight: 700,
-                      letterSpacing: 'clamp(-0.66px, -0.03em, -0.84px)',
-                      lineHeight: 'clamp(26.4px, 1.2em, 33.6px)'
-                    }}
-                  >
-                    결과물 다운로드 또는 편집
-                  </h3>
                   
                   {/* Description */}
                   <p 
@@ -916,10 +1121,10 @@ export default function IdentiVis() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <span className="block sm:hidden">
-                  ConversAI는 기존 챗봇의 한계를 해결하고, 기업 맥락에 맞는 지능형 대화 경험을 제공합니다.
+                  브랜드 스타일을 학습한 AI가 일관된 비주얼을 자동 생성합니다.
                 </span>
                 <span className="hidden sm:block">
-                  ConversAI는 기존 챗봇의 한계를 해결하고, 기업 맥락에 맞는 지능형 대화 경험을 제공합니다.
+                  브랜드 스타일을 학습한 AI가 일관된 비주얼을 자동 생성합니다.
                 </span>
               </motion.p>
             </div>
@@ -950,12 +1155,12 @@ export default function IdentiVis() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[180px] sm:h-[200px] lg:h-[237px] transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-12.png"
                       alt="Stable Diffusion 이미지 생성"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -966,7 +1171,7 @@ export default function IdentiVis() {
                       className="text-[#333333] mb-2 sm:mb-3"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(18px, 3vw, 24px)',
+                        fontSize: 'clamp(20px, 3vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
                         lineHeight: 'clamp(21.6px, 1.2em, 28.8px)'
@@ -978,7 +1183,7 @@ export default function IdentiVis() {
                       className="text-[#666666]"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 20px)',
+                        fontSize: 'clamp(16px, 2.5vw, 20px)',
                         fontWeight: 400,
                         letterSpacing: '0px',
                         lineHeight: 'clamp(16.8px, 1.2em, 24px)'
@@ -999,12 +1204,12 @@ export default function IdentiVis() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[180px] sm:h-[200px] lg:h-[237px] transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-13.png"
                       alt="LoRA 학습 브랜드 스타일 최적화"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -1015,7 +1220,7 @@ export default function IdentiVis() {
                       className="text-[#333333] mb-2 sm:mb-3"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(18px, 3vw, 24px)',
+                        fontSize: 'clamp(20px, 3vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
                         lineHeight: 'clamp(21.6px, 1.2em, 28.8px)'
@@ -1027,7 +1232,7 @@ export default function IdentiVis() {
                       className="text-[#666666]"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 20px)',
+                        fontSize: 'clamp(16px, 2.5vw, 20px)',
                         fontWeight: 400,
                         letterSpacing: '0px',
                         lineHeight: 'clamp(16.8px, 1.2em, 24px)'
@@ -1048,12 +1253,12 @@ export default function IdentiVis() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[180px] sm:h-[200px] lg:h-[237px] transition-all duration-300 ease-in-out hover:shadow-lg group sm:col-span-2 lg:col-span-1"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-14.png"
                       alt="프롬프트 아이콘 일러스트 자동화"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -1064,7 +1269,7 @@ export default function IdentiVis() {
                       className="text-[#333333] mb-2 sm:mb-3"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(18px, 3vw, 24px)',
+                        fontSize: 'clamp(20px, 3vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
                         lineHeight: 'clamp(21.6px, 1.2em, 28.8px)'
@@ -1076,13 +1281,13 @@ export default function IdentiVis() {
                       className="text-[#666666]"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 20px)',
+                        fontSize: 'clamp(16px, 2.5vw, 20px)',
                         fontWeight: 400,
                         letterSpacing: '0px',
                         lineHeight: 'clamp(16.8px, 1.2em, 24px)'
                       }}
                     >
-                      키워드만 입력하면 아이콘, 배경, 일러스트가 자동 생성됩니다.
+                      복잡한 프롬프트 없이도 원하는 스타일의 그래픽을 생성할 수 있습니다.
                     </p>
                   </div>
                 </motion.div>
@@ -1100,12 +1305,12 @@ export default function IdentiVis() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[180px] sm:h-[200px] lg:h-[237px] transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-15.png"
                       alt="스타일가이드 반영률"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -1116,7 +1321,7 @@ export default function IdentiVis() {
                       className="text-[#333333] mb-2 sm:mb-3"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(18px, 3vw, 24px)',
+                        fontSize: 'clamp(20px, 3vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
                         lineHeight: 'clamp(21.6px, 1.2em, 28.8px)'
@@ -1128,7 +1333,7 @@ export default function IdentiVis() {
                       className="text-[#666666]"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 20px)',
+                        fontSize: 'clamp(16px, 2.5vw, 20px)',
                         fontWeight: 400,
                         letterSpacing: '0px',
                         lineHeight: 'clamp(16.8px, 1.2em, 24px)'
@@ -1149,12 +1354,12 @@ export default function IdentiVis() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[180px] sm:h-[200px] lg:h-[237px] transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-16.png"
                       alt="정교한 표현 제어 기술"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -1165,7 +1370,7 @@ export default function IdentiVis() {
                       className="text-[#333333] mb-2 sm:mb-3"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(18px, 3vw, 24px)',
+                        fontSize: 'clamp(20px, 3vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
                         lineHeight: 'clamp(21.6px, 1.2em, 28.8px)'
@@ -1177,7 +1382,7 @@ export default function IdentiVis() {
                       className="text-[#666666]"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 20px)',
+                        fontSize: 'clamp(16px, 2.5vw, 20px)',
                         fontWeight: 400,
                         letterSpacing: '0px',
                         lineHeight: 'clamp(16.8px, 1.2em, 24px)'
@@ -1198,12 +1403,12 @@ export default function IdentiVis() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[180px] sm:h-[200px] lg:h-[237px] transition-all duration-300 ease-in-out hover:shadow-lg group sm:col-span-2 lg:col-span-1"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-17.png"
                       alt="웹 기반 SaaS 다양한 포맷 지원"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -1214,7 +1419,7 @@ export default function IdentiVis() {
                       className="text-[#333333] mb-2 sm:mb-3"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(18px, 3vw, 24px)',
+                        fontSize: 'clamp(20px, 3vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
                         lineHeight: 'clamp(21.6px, 1.2em, 28.8px)'
@@ -1226,13 +1431,13 @@ export default function IdentiVis() {
                       className="text-[#666666]"
                       style={{
                         fontFamily: 'Pretendard, sans-serif',
-                        fontSize: 'clamp(14px, 2.5vw, 20px)',
+                        fontSize: 'clamp(16px, 2.5vw, 20px)',
                         fontWeight: 400,
                         letterSpacing: '0px',
                         lineHeight: 'clamp(16.8px, 1.2em, 24px)'
                       }}
                     >
-                      PNG, JPEG, SVG 등으로 저장하고 협업 플랫폼에서 바로 활용할 수 있습니다.
+                      별도 설치 없이 웹에서 바로 사용하고, PNG, SVG 등 다양한 포맷으로 저장할 수 있습니다.
                     </p>
                   </div>
                 </motion.div>
@@ -1243,222 +1448,195 @@ export default function IdentiVis() {
 
         {/* Demo Video Section */}
         <section className="py-16 sm:py-20 lg:py-24 bg-[#222222] text-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            {/* Title */}
-            <div className="mb-12 sm:mb-16">
-              <motion.h2
-                className="text-white mb-4 sm:mb-6"
-                style={{
-                  fontFamily: 'Pretendard, sans-serif',
-                  fontSize: 'clamp(28px, 5vw, 40px)',
-                  fontWeight: 700,
-                  letterSpacing: 'clamp(-0.84px, -0.03em, -1.2px)',
-                  lineHeight: 'clamp(33.6px, 1.2em, 47.73px)'
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6 }}
-              >
-                브랜드 스타일이 자동으로 구현되는 순간
-              </motion.h2>
-              <motion.p
-                className="text-white"
-                style={{
-                  fontFamily: 'Pretendard, sans-serif',
-                  fontSize: 'clamp(16px, 3vw, 24px)',
-                  fontWeight: 400,
-                  letterSpacing: '0px',
-                  lineHeight: 'clamp(19.2px, 1.2em, 28.8px)'
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <span className="block sm:hidden">
-                  스타일가이드를 기반으로 어떻게 이미지가 자동 생성되는지 실제 작동 화면으로 보여드립니다.
-                </span>
-                <span className="hidden sm:block">
-                  스타일가이드를 기반으로 어떻게 이미지가 자동 생성되는지<br />
-                  실제 작동 화면으로 보여드립니다.
-                </span>
-              </motion.p>
-            </div>
+          <motion.h2
+            className="text-[24px] sm:text-[32px] lg:text-[40px] font-bold text-white mb-3 sm:mb-4 font-['Pretendard'] tracking-[-0.72px] sm:tracking-[-0.96px] lg:tracking-[-1.2px] leading-[1.2]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="block lg:hidden">
+              브랜드 스타일이 <br />
+              자동으로 구현되는 순간
+            </span>
+            <span className="hidden lg:block">
+              브랜드 스타일이 자동으로 구현되는 순간
+            </span>
+          </motion.h2>
+          <motion.p
+            className="text-[16px] sm:text-[20px] lg:text-[24px] font-normal text-white mb-6 sm:mb-8 font-['Pretendard'] tracking-[0px] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] px-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="block lg:hidden">
+              스타일가이드를 기반으로 어떻게<br />
+              이미지가 자동 생성되는지<br />
+              실제 작동 화면으로 보여드립니다.
+            </span>
+            <span className="hidden lg:block">
+              스타일가이드를 기반으로 어떻게 이미지가 자동 생성되는지<br />
+              실제 작동 화면으로 보여드립니다.
+            </span>
+          </motion.p>
 
-            {/* Video Container */}
-            <motion.div
-              className="relative mx-auto max-w-[1200px] px-4 sm:px-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              <div className="relative group cursor-pointer">
-                {/* Video Background Container with responsive dimensions */}
-                <div className="w-full h-[240px] sm:h-[400px] lg:h-[680px] relative">
-                  {/* Thumbnail with play button overlay */}
-                  {!isVideoPlaying && (
-                    <>
-                      <Image
-                        src="/images/identivis-thumbnail.jpg"
-                        alt="IdentiVis Demo Video Thumbnail"
-                        fill
-                        className="object-cover w-full h-full rounded-[16px] sm:rounded-[24px] lg:rounded-[32px]"
-                        onClick={handlePlayVideo}
-                      />
-                      
-                      {/* Play button overlay with responsive sizing */}
-                      <div 
-                        className="absolute inset-0 flex items-center justify-center" 
-                        onClick={handlePlayVideo}
-                      >
-                        <div 
-                          className="bg-[#2d81fd] rounded-full flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
+          <motion.div
+            className="relative mx-auto max-w-[1200px] px-4 sm:px-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            <div className="relative group cursor-pointer">
+              {/* Video Container with 16:9 aspect ratio */}
+              <div className="w-full aspect-video relative">
+                {/* Thumbnail with play button overlay */}
+                {!isVideoPlaying && (
+                  <>
+                    <Image
+                      src="/images/identivis-thumbnail.png"
+                      alt="IdentiVis Demo Video Thumbnail"
+                      fill
+                      className="rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] shadow-md object-cover"
+                      onClick={handlePlayVideo}
+                    />
+                    
+                    {/* Play button overlay centered */}
+                    <div 
+                      className="absolute inset-0 flex items-center justify-center" 
+                      onClick={handlePlayVideo}
+                    >
+                      <div className="bg-[#2d81fd] bg-opacity-90 rounded-full w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:bg-opacity-100 group-hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
                       </div>
-                    </>
-                  )}
-                  
-                  {/* Video element */}
-                  <video
-                    ref={videoRef}
-                    src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/identivis-demo.mp4"
-                    poster="/images/identivis-thumbnail.jpg"
-                    controls
-                    preload="metadata"
-                    playsInline
-                    className={isVideoPlaying ? "rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] w-full h-full object-cover" : "hidden"}
-                    id="demoVideo"
-                  />
-                </div>
+                    </div>
+                  </>
+                )}
+                
+                {/* Video element */}
+                <video
+                  ref={videoRef}
+                  src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/identivis-demo.mp4"
+                  poster="/images/identivis-thumbnail.png"
+                  controls
+                  preload="metadata"
+                  playsInline
+                  className={isVideoPlaying ? "rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] shadow-md w-full h-full object-cover" : "hidden"}
+                  id="demoVideo"
+                />
               </div>
-              
-              {/* Caption */}
-              <motion.p
-                className="text-[#999999] mt-4 sm:mt-6"
-                style={{
-                  fontFamily: 'Pretendard, sans-serif',
-                  fontSize: 'clamp(14px, 2.5vw, 20px)',
-                  fontWeight: 400,
-                  letterSpacing: '0px',
-                  lineHeight: 'clamp(16.8px, 1.2em, 24px)'
-                }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
+            </div>
+            <motion.p
+              className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#999999] font-['Pretendard'] tracking-[0px] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mt-3 sm:mt-4 px-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <span className="block sm:hidden">
+                ※ 위 영상은 IdentiVis를 활용한<br />
+                롯데월드 프로젝트 화면 일부를<br />
+                기반으로 제작되었습니다.
+              </span>
+              <span className="hidden sm:block">
                 ※ 위 영상은 IdentiVis를 활용한 롯데월드 프로젝트 화면 일부를 기반으로 제작되었습니다.
-              </motion.p>
-            </motion.div>
-          </div>
+              </span>
+            </motion.p>
+          </motion.div>
         </section>
 
         {/* Additional CTA Section */}
         <section className="py-16 sm:py-20 lg:py-24 bg-white text-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <motion.div
-              className="text-center max-w-[1200px] mx-auto"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.4 }}
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.15
-                  }
+          <motion.div
+            className="container mx-auto px-4 sm:px-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
                 }
+              }
+            }}
+          >
+            {/* 프리헤드 */}
+            <motion.p
+              className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#2d81fd] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2] mb-4 sm:mb-5"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
               }}
+              transition={{ duration: 0.6 }}
             >
-              {/* 프리헤드 */}
-              <motion.p
-                className="text-[#2d81fd] mb-3 sm:mb-4"
-                style={{
-                  fontFamily: 'Pretendard, sans-serif',
-                  fontSize: 'clamp(18px, 3vw, 24px)',
-                  fontWeight: 700,
-                  letterSpacing: 'clamp(-0.54px, -0.03em, -0.72px)',
-                  lineHeight: 'clamp(25.2px, 1.4em, 33.6px)'
-                }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                transition={{ duration: 0.6 }}
-              >
+              <span className="block sm:hidden">
+                디자인은 반복되고,<br />
+                리소스는 부족하다면?
+              </span>
+              <span className="hidden sm:block">
                 디자인은 반복되고, 리소스는 부족하다면?
-              </motion.p>
+              </span>
+            </motion.p>
 
-              {/* 메인 카피 */}
-              <motion.h2
-                className="text-[#222222] mb-4 sm:mb-6"
-                style={{
-                  fontFamily: 'Pretendard, sans-serif',
-                  fontSize: 'clamp(28px, 5vw, 40px)',
-                  fontWeight: 700,
-                  letterSpacing: 'clamp(-0.84px, -0.03em, -1.2px)',
-                  lineHeight: 'clamp(33.6px, 0.95em, 38px)'
-                }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                transition={{ duration: 0.6 }}
-              >
+            {/* 메인 카피 */}
+            <motion.h2
+              className="text-[24px] sm:text-[32px] lg:text-[40px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.72px] sm:tracking-[-0.96px] lg:tracking-[-1.2px] leading-[1.2] mb-6 sm:mb-8 lg:mb-10"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="block sm:hidden">
+                지금, 디자인 자동화를<br />
+                시작해보세요
+              </span>
+              <span className="hidden sm:block">
                 지금, 디자인 자동화를 시작해보세요
-              </motion.h2>
+              </span>
+            </motion.h2>
 
-              {/* 서브카피 */}
-              <motion.p
-                className="text-[#333333] mb-6 sm:mb-8"
-                style={{
-                  fontFamily: 'Pretendard, sans-serif',
-                  fontSize: 'clamp(16px, 3vw, 24px)',
-                  fontWeight: 400,
-                  letterSpacing: 'clamp(-0.48px, -0.03em, -0.72px)',
-                  lineHeight: 'clamp(22.4px, 1.4em, 33.6px)'
-                }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                transition={{ duration: 0.6 }}
-              >
-                <span className="block sm:hidden">
-                  프레임아웃은 디지털 경험의 본질을 탐구하는 Intelligent eXperience Explorer입니다.
-                </span>
-                <span className="hidden sm:block">
-                  프레임아웃은 디지털 경험의 본질을 탐구하는<br />
-                  Intelligent eXperience Explorer입니다.
-                </span>
-              </motion.p>
+            {/* 서브카피 */}
+            <motion.p
+              className="text-[16px] sm:text-[20px] lg:text-[24px] font-normal text-[#333333] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="block sm:hidden">
+                프레임아웃은 IX를 중심으로<br />
+                AI 기술을 활용한<br />
+                혁신적인 디지털 경험을 제공합니다.
+              </span>
+              <span className="hidden sm:block">
+                프레임아웃은 IX를 중심으로 AI 기술을 활용한<br />
+                혁신적인 디지털 경험을 제공합니다.
+              </span>
+            </motion.p>
 
-              {/* CTA 버튼 */}
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20, scale: 0.9 },
-                  visible: { opacity: 1, y: 0, scale: 1 }
-                }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <ContactDialog 
-                  triggerText="문의하기" 
-                  buttonClassName="inline-flex items-center justify-center w-[120px] h-[44px] sm:w-[133px] sm:h-[48px] rounded-[50px] bg-[#222222] hover:bg-[#F26222] text-white transition-all duration-300 font-['Noto_Sans_KR'] font-medium text-[14px] sm:text-[16px] leading-[14px] sm:leading-[16px]"
-                  icon={<svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-2 sm:w-[14px] sm:h-[14px]">
-                    <path d="M13 1L1 13M13 1L13 9M13 1L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>}
-                />
-              </motion.div>
+            {/* CTA 버튼 */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20, scale: 0.9 },
+                visible: { opacity: 1, y: 0, scale: 1 }
+              }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ContactDialog 
+                triggerText="문의하기" 
+                buttonClassName="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 sm:py-3 h-10 sm:h-12 rounded-[50px] bg-[#222222] hover:bg-[#F26222] text-white text-[14px] sm:text-[16px] font-medium font-['Noto Sans KR'] transition-all duration-300"
+                icon={<ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />}
+              />
             </motion.div>
-          </div>
+          </motion.div>
         </section>
       </main>
     </React.Fragment>

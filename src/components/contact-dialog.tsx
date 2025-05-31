@@ -123,12 +123,19 @@ export default function ContactDialog({
           {icon}
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-black text-white border-gray-800" hideCloseButton>
-        <DialogHeader className="flex flex-row items-center justify-between">
-          <DialogTitle className="text-2xl font-bold text-white">
-            앞으로의 가능성을 함께 열어갑니다!
+      <DialogContent className="sm:max-w-[600px] bg-[#1C1C1C] text-white border-gray-800" hideCloseButton>
+        <DialogHeader className="flex flex-row items-start justify-between">
+          <DialogTitle className="text-2xl font-bold text-white text-left flex-1">
+            <span className="block sm:hidden">
+              앞으로의 가능성을
+              <br />
+              함께 열어갑니다!
+            </span>
+            <span className="hidden sm:block">
+              앞으로의 가능성을 함께 열어갑니다!
+            </span>
           </DialogTitle>
-          <DialogClose className="text-gray-400 hover:text-white">
+          <DialogClose className="text-gray-400 hover:text-white ml-4 flex-shrink-0">
             <X size={18} />
             <span className="sr-only">닫기</span>
           </DialogClose>
@@ -232,12 +239,20 @@ export default function ContactDialog({
               control={form.control}
               name="privacyAgreement"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                <FormItem className="flex flex-row items-center space-x-3 space-y-0">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       className="border-white data-[state=checked]:bg-red-500 data-[state=checked]:text-white"
+                      style={{ 
+                        height: '14px', 
+                        width: '14px',
+                        minHeight: '14px',
+                        minWidth: '14px',
+                        maxHeight: '14px',
+                        maxWidth: '14px'
+                      }}
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">

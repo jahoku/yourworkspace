@@ -114,12 +114,12 @@ export default function ContactPage() {
   return (
     <React.Fragment>
       <JsonLd data={contactPageSchema} />
-      <div className="flex min-h-screen flex-col bg-black text-white">
+      <div className="flex min-h-screen flex-col bg-[#1C1C1C] text-white">
         {/* GNB */}
         <GNB />
 
         {/* 콘텐츠 */}
-        <div className="mt-16 flex flex-1 items-center justify-center">
+        <div className="mt-32 md:mt-40 flex flex-1 items-center justify-center">
           <div className="container max-w-2xl p-8">
             <div className="mb-6 flex items-center">
               <Link href="/" className="flex items-center text-gray-400 hover:text-white">
@@ -128,7 +128,16 @@ export default function ContactPage() {
               </Link>
             </div>
             
-            <h1 className="mb-6 text-2xl font-bold">앞으로의 가능성을 함께 열어갑니다!</h1>
+            <h1 className="mb-6 text-2xl font-bold">
+              <span className="block sm:hidden">
+                앞으로의 가능성을
+                <br />
+                함께 열어갑니다!
+              </span>
+              <span className="hidden sm:block">
+                앞으로의 가능성을 함께 열어갑니다!
+              </span>
+            </h1>
           
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -228,12 +237,20 @@ export default function ContactPage() {
                   control={form.control}
                   name="privacyAgreement"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                    <FormItem className="flex flex-row items-center space-x-3 space-y-0">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
                           className="border-white data-[state=checked]:bg-red-500 data-[state=checked]:text-white"
+                          style={{ 
+                            height: '14px', 
+                            width: '14px',
+                            minHeight: '14px',
+                            minWidth: '14px',
+                            maxHeight: '14px',
+                            maxWidth: '14px'
+                          }}
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">

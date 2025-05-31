@@ -16,29 +16,34 @@ import JsonLd from '@/components/JsonLd'
 // Components
 const features = [
   {
-    title: '캠페인 목표 설정',
-    description: '목표에 따라 템플릿, 문안, 디자인을 자동 추천합니다.',
+    title: 'AI 맞춤 콘텐츠 추천',
+    description: '과거 성과 데이터를 분석하여 목적에 맞는 템플릿, 문안, 디자인을 제안합니다.',
     img: '/illustrations/AP_icon_01.png',
   },
   {
-    title: '콘텐츠 생성',
-    description: '카피와 이미지 중심의 콘텐츠를 자동 생성 및 수정합니다.',
+    title: '브랜드 일관성 자동 적용',
+    description: '브랜드 톤과 스타일을 학습하여 콘텐츠 전반에 일관된 비주얼 가이드를 적용합니다.',
     img: '/illustrations/AP_icon_02.png',
   },
   {
-    title: 'HTML 변환',
-    description: '웹 퍼블리싱이 가능한 HTML이 자동 생성됩니다.',
+    title: '실시간 경쟁 콘텐츠 분석',
+    description: '경쟁 콘텐츠를 분석하여 전략 수립에 활용할 수 있는 인사이트를 제공합니다.',
     img: '/illustrations/AP_icon_03.png',
   },
   {
-    title: '운영 대응 안내',
-    description: '이벤트 교체, 종료 등 운영 관리가 쉬워집니다.',
+    title: '카피 및 디자인 자동 생성',
+    description: '기본 문안 작성과 디자인 생성도구를 통해 콘텐츠 제작 속도를 높입니다.',
     img: '/illustrations/AP_icon_04.png',
   },
   {
-    title: '다양한 플랫폼 최적화',
-    description: 'PC, 모바일, 커머스에 맞춰 유연하게 대응합니다.',
+    title: '검수 및 HTML 변환',
+    description: 'AI가 1차 검수하고, HTML 변환, 템플릿 관리를 통해 반복 업무를 효율화합니다.',
     img: '/illustrations/AP_icon_05.png',
+  },
+  {
+    title: '멀티 플랫폼 최적화 대응',
+    description: '웹, 모바일, 커머스 채널에 맞춰 콘텐츠 리사이징을 지원합니다.',
+    img: '/illustrations/AP_icon_06.png',
   },
 ]
 
@@ -156,7 +161,7 @@ export default function AutoPageAI() {
       <JsonLd data={autoPageAISchema} />
       <main className="pt-16 flex flex-col min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#222222] via-[#333333] to-[#1a1a1a] h-[400px] sm:h-[450px] lg:h-[450px] flex items-center justify-center overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#222222] via-[#333333] to-[#1a1a1a] h-[450px] sm:h-[450px] lg:h-[450px] flex items-center justify-center overflow-hidden mt-8 sm:mt-12 md:mt-20 lg:mt-28">
           {/* Background Image */}
           <div className="absolute inset-0 w-full h-full opacity-80">
             <Image
@@ -264,12 +269,12 @@ export default function AutoPageAI() {
                     visible: { opacity: 1, y: 0 }
                   }}
                   transition={{ duration: 0.7, ease: 'easeOut' }}
-                  className="bg-[#f8f8f9] rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 h-[140px] sm:h-[153px] flex flex-col justify-start transition-all duration-300 ease-in-out hover:shadow-lg group"
+                  className="bg-[#f8f8f9] rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 h-[140px] sm:h-[160px] flex flex-col justify-center transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
-                  <h3 className="text-[18px] sm:text-[22px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.72px] leading-[1.2] mb-2 sm:mb-3">
+                  <h3 className="text-[20px] sm:text-[24px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.72px] leading-[1.2] mb-3 sm:mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-[14px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.2]">
+                  <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3]">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -458,22 +463,22 @@ export default function AutoPageAI() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[200px] sm:h-[220px] lg:h-[237px] flex flex-col justify-start transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* 아이콘 영역 */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-1.png"
                       alt="콘텐츠 제작 속도 향상"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   
                   {/* 텍스트 영역 */}
                   <div className="flex-1">
-                    <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.2] mb-2 sm:mb-3 lg:mb-[13px]">
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.72px] leading-[1.2] mb-3 sm:mb-4 lg:mb-[13px]">
                       콘텐츠 제작 속도 향상
                     </h3>
-                    <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+                    <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2]">
                       <span className="block lg:hidden">
                         반복 업무를 자동화해 콘텐츠 제작 시간을 대폭 줄입니다.
                       </span>
@@ -495,22 +500,22 @@ export default function AutoPageAI() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[200px] sm:h-[220px] lg:h-[237px] flex flex-col justify-start transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* 아이콘 영역 */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-2.png"
                       alt="전략부터 운영까지 연결"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   
                   {/* 텍스트 영역 */}
                   <div className="flex-1">
-                    <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.2] mb-2 sm:mb-3 lg:mb-[13px]">
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.72px] leading-[1.2] mb-3 sm:mb-4 lg:mb-[13px]">
                       전략부터 운영까지 연결
                     </h3>
-                    <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+                    <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2]">
                       <span className="block lg:hidden">
                         경쟁사 분석부터 콘텐츠 운영까지, 하나의 자동화된 흐름으로 연결됩니다.
                       </span>
@@ -532,22 +537,22 @@ export default function AutoPageAI() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[200px] sm:h-[220px] lg:h-[237px] flex flex-col justify-start transition-all duration-300 ease-in-out hover:shadow-lg group sm:col-span-2 lg:col-span-1"
                 >
                   {/* 아이콘 영역 */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-3.png"
                       alt="협업 효율 향상"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   
                   {/* 텍스트 영역 */}
                   <div className="flex-1">
-                    <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.2] mb-2 sm:mb-3 lg:mb-[13px]">
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.72px] leading-[1.2] mb-3 sm:mb-4 lg:mb-[13px]">
                       협업 효율 향상
                     </h3>
-                    <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+                    <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2]">
                       <span className="block lg:hidden">
                         팀 간 반복 커뮤니케이션 없이, 더 빠른 결정과 실행이 가능합니다.
                       </span>
@@ -572,22 +577,22 @@ export default function AutoPageAI() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[200px] sm:h-[220px] lg:h-[237px] flex flex-col justify-start transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* 아이콘 영역 */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-4.png"
                       alt="멀티플랫폼 대응력"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   
                   {/* 텍스트 영역 */}
                   <div className="flex-1">
-                    <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.2] mb-2 sm:mb-3 lg:mb-[13px]">
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.72px] leading-[1.2] mb-3 sm:mb-4 lg:mb-[13px]">
                       멀티플랫폼 대응력
                     </h3>
-                    <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+                    <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2]">
                       <span className="block lg:hidden">
                         웹, 모바일, 커머스 플랫폼에 맞춘 콘텐츠가 자동 퍼블리싱됩니다.
                       </span>
@@ -609,22 +614,22 @@ export default function AutoPageAI() {
                   className="bg-white rounded-[16px] sm:rounded-[20px] lg:rounded-[24px] p-4 sm:p-5 lg:p-6 h-[200px] sm:h-[220px] lg:h-[237px] flex flex-col justify-start transition-all duration-300 ease-in-out hover:shadow-lg group"
                 >
                   {/* 아이콘 영역 */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-10 h-10 mb-4 sm:mb-5 lg:mb-6 transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
                     <Image
                       src="/icons/icon-5.png"
                       alt="지속 가능한 성과 향상"
-                      width={64}
-                      height={64}
+                      width={40}
+                      height={40}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   
                   {/* 텍스트 영역 */}
                   <div className="flex-1">
-                    <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1.2] mb-2 sm:mb-3 lg:mb-[13px]">
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[24px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.72px] leading-[1.2] mb-3 sm:mb-4 lg:mb-[13px]">
                       지속 가능한 성과 향상
                     </h3>
-                    <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+                    <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2]">
                       <span className="block lg:hidden">
                         AI가 성과 높은 콘텐츠 패턴을 학습하고 반영해 예측 가능한 전략이 가능해집니다.
                       </span>
@@ -698,10 +703,10 @@ export default function AutoPageAI() {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-2 lg:order-1">
+                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-1 lg:order-1">
                   <div className="relative bg-[#222222] rounded-[16px] sm:rounded-[20px] overflow-hidden w-full h-full">
                     <Image
-                      src="/images/workflow/image-1.png"
+                      src="/images/workflow/image-1.png?v=2"
                       alt="전략 수립 및 방향 설정"
                       width={550}
                       height={300}
@@ -712,15 +717,15 @@ export default function AutoPageAI() {
                     />
                   </div>
                 </div>
-                <div className="w-full lg:w-[550px] order-1 lg:order-2">
+                <div className="w-full lg:w-[550px] order-2 lg:order-2">
                   <div className="mb-4 sm:mb-6">
-                    <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1]">
-                      STEP 1
-                    </span>
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2]">
+                      <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1] mr-3">
+                        STEP 1
+                      </span>
+                      전략 수립 및 방향 설정
+                    </h3>
                   </div>
-                  <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2] mb-3 sm:mb-4">
-                    전략 수립 및 방향 설정
-                  </h3>
                   <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mb-4 sm:mb-6">
                     캠페인 정보와 타겟 특성에 따라 콘텐츠 전략 방향을 설정하고, 트렌드와 경쟁사 사례를 참고한 템플릿을 제안합니다.
                   </p>
@@ -750,10 +755,10 @@ export default function AutoPageAI() {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-2 lg:order-1">
+                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-1 lg:order-1">
                   <div className="relative bg-[#4b6080] rounded-[16px] sm:rounded-[20px] overflow-hidden w-full h-full">
                     <Image
-                      src="/images/workflow/image-2.png"
+                      src="/images/workflow/image-2.png?v=2"
                       alt="AI 콘텐츠 생성"
                       width={550}
                       height={300}
@@ -764,15 +769,15 @@ export default function AutoPageAI() {
                     />
                   </div>
                 </div>
-                <div className="w-full lg:w-[550px] order-1 lg:order-2">
+                <div className="w-full lg:w-[550px] order-2 lg:order-2">
                   <div className="mb-4 sm:mb-6">
-                    <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1]">
-                      STEP 2
-                    </span>
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2]">
+                      <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1] mr-3">
+                        STEP 2
+                      </span>
+                      AI 콘텐츠 생성
+                    </h3>
                   </div>
-                  <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2] mb-3 sm:mb-4">
-                    AI 콘텐츠 생성
-                  </h3>
                   <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mb-4 sm:mb-6">
                     설정된 전략에 따라 AI가 브랜드 톤에 맞는 카피와 이미지를 자동 생성합니다. 과거 성과 데이터를 학습하여 최적화된 콘텐츠를 제안합니다.
                   </p>
@@ -802,10 +807,10 @@ export default function AutoPageAI() {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-2 lg:order-1">
+                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-1 lg:order-1">
                   <div className="relative bg-[#2d81fd] rounded-[16px] sm:rounded-[20px] overflow-hidden w-full h-full">
                     <Image
-                      src="/images/workflow/image-3.png"
+                      src="/images/workflow/image-3.png?v=2"
                       alt="디자인 최적화"
                       width={550}
                       height={300}
@@ -816,15 +821,15 @@ export default function AutoPageAI() {
                     />
                   </div>
                 </div>
-                <div className="w-full lg:w-[550px] order-1 lg:order-2">
+                <div className="w-full lg:w-[550px] order-2 lg:order-2">
                   <div className="mb-4 sm:mb-6">
-                    <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1]">
-                      STEP 3
-                    </span>
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2]">
+                      <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1] mr-3">
+                        STEP 3
+                      </span>
+                      디자인 최적화
+                    </h3>
                   </div>
-                  <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2] mb-3 sm:mb-4">
-                    디자인 최적화
-                  </h3>
                   <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mb-4 sm:mb-6">
                     브랜드 가이드라인에 따라 일관된 비주얼 스타일을 적용하고, 다양한 플랫폼에 최적화된 디자인으로 자동 조정합니다.
                   </p>
@@ -854,10 +859,10 @@ export default function AutoPageAI() {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-2 lg:order-1">
+                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-1 lg:order-1">
                   <div className="relative bg-[#cddcfb] rounded-[16px] sm:rounded-[20px] overflow-hidden w-full h-full">
                     <Image
-                      src="/images/workflow/image-4.png"
+                      src="/images/workflow/image-4.png?v=2"
                       alt="검수 및 승인"
                       width={550}
                       height={300}
@@ -868,15 +873,15 @@ export default function AutoPageAI() {
                     />
                   </div>
                 </div>
-                <div className="w-full lg:w-[550px] order-1 lg:order-2">
+                <div className="w-full lg:w-[550px] order-2 lg:order-2">
                   <div className="mb-4 sm:mb-6">
-                    <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1]">
-                      STEP 4
-                    </span>
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2]">
+                      <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1] mr-3">
+                        STEP 4
+                      </span>
+                      검수 및 승인
+                    </h3>
                   </div>
-                  <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2] mb-3 sm:mb-4">
-                    검수 및 승인
-                  </h3>
                   <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mb-4 sm:mb-6">
                     AI가 1차 품질 검수를 진행하고, 팀 내 협업 도구를 통해 실시간 피드백과 수정사항을 반영하여 최종 승인을 받습니다.
                   </p>
@@ -906,10 +911,10 @@ export default function AutoPageAI() {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-2 lg:order-1">
+                <div className="w-full lg:w-[550px] h-[200px] sm:h-[250px] lg:h-[300px] order-1 lg:order-1">
                   <div className="relative bg-[#dce4f5] rounded-[16px] sm:rounded-[20px] overflow-hidden w-full h-full">
                     <Image
-                      src="/images/workflow/image-5.png"
+                      src="/images/workflow/image-5.png?v=2"
                       alt="퍼블리싱 및 운영"
                       width={550}
                       height={300}
@@ -920,15 +925,15 @@ export default function AutoPageAI() {
                     />
                   </div>
                 </div>
-                <div className="w-full lg:w-[550px] order-1 lg:order-2">
+                <div className="w-full lg:w-[550px] order-2 lg:order-2">
                   <div className="mb-4 sm:mb-6">
-                    <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1]">
-                      STEP 5
-                    </span>
+                    <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2]">
+                      <span className="bg-[#e6f6ff] text-[#4c9dc0] border border-[#bde2f2] rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-bold font-['Pretendard'] tracking-[-0.42px] sm:tracking-[-0.48px] leading-[1.1] mr-3">
+                        STEP 5
+                      </span>
+                      퍼블리싱 및 운영
+                    </h3>
                   </div>
-                  <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.72px] lg:tracking-[-0.84px] leading-[1.2] mb-3 sm:mb-4">
-                    퍼블리싱 및 운영
-                  </h3>
                   <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] mb-4 sm:mb-6">
                     완성된 콘텐츠를 웹, 모바일, 커머스 플랫폼에 자동 배포하고, 성과 데이터를 수집하여 지속적인 최적화를 진행합니다.
                   </p>
@@ -1004,21 +1009,21 @@ export default function AutoPageAI() {
               >
                 <div className="mb-6 sm:mb-8">
                   <div className="flex items-end mb-4 sm:mb-6">
-                    <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] mr-1 mb-2 sm:mb-3">
+                    <span className="text-[18px] sm:text-[22px] lg:text-[26px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] mr-1 mb-2 sm:mb-3">
                       최대
                     </span>
                     <span className="text-[40px] sm:text-[50px] lg:text-[60px] font-bold text-[#222222] font-['DM Sans'] tracking-[-1.2px] sm:tracking-[-1.5px] lg:tracking-[-1.8px] leading-[1]">
                       <CountUp end={70} duration={2000} />
                     </span>
-                    <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] ml-1 mb-2 sm:mb-3">
+                    <span className="text-[18px] sm:text-[22px] lg:text-[26px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] ml-1 mb-2 sm:mb-3">
                       %
                     </span>
                   </div>
-                  <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-medium text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] mb-3 sm:mb-4">
+                  <h3 className="text-[20px] sm:text-[22px] lg:text-[26px] font-medium text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] mb-3 sm:mb-4">
                     업무시간 단축
                   </h3>
                 </div>
-                <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2] flex-1">
+                <p className="text-[16px] sm:text-[18px] lg:text-[22px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] flex-1">
                   <span className="block lg:hidden">
                     반복 업무를 자동화해 처리 시간을 크게 줄일 수 있습니다.
                   </span>
@@ -1040,21 +1045,21 @@ export default function AutoPageAI() {
               >
                 <div className="mb-6 sm:mb-8">
                   <div className="flex items-end mb-4 sm:mb-6">
-                    <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] mr-1 mb-2 sm:mb-3">
+                    <span className="text-[18px] sm:text-[22px] lg:text-[26px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] mr-1 mb-2 sm:mb-3">
                       최대
                     </span>
                     <span className="text-[40px] sm:text-[50px] lg:text-[60px] font-bold text-[#222222] font-['DM Sans'] tracking-[-1.2px] sm:tracking-[-1.5px] lg:tracking-[-1.8px] leading-[1]">
                       <CountUp end={2} duration={2000} />
                     </span>
-                    <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] ml-1 mb-2 sm:mb-3">
+                    <span className="text-[18px] sm:text-[22px] lg:text-[26px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] ml-1 mb-2 sm:mb-3">
                       배 향상
                     </span>
                   </div>
-                  <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-medium text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] mb-3 sm:mb-4">
+                  <h3 className="text-[20px] sm:text-[22px] lg:text-[26px] font-medium text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] mb-3 sm:mb-4">
                     콘텐츠 제작 효율
                   </h3>
                 </div>
-                <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2] flex-1">
+                <p className="text-[16px] sm:text-[18px] lg:text-[22px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] flex-1">
                   기획부터 퍼블리싱까지 전 과정을 AI가 도와줍니다.
                 </p>
               </motion.div>
@@ -1070,21 +1075,21 @@ export default function AutoPageAI() {
               >
                 <div className="mb-6 sm:mb-8">
                   <div className="flex items-end mb-4 sm:mb-6">
-                    <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] mr-1 mb-2 sm:mb-3">
+                    <span className="text-[18px] sm:text-[22px] lg:text-[26px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] mr-1 mb-2 sm:mb-3">
                       평균
                     </span>
                     <span className="text-[40px] sm:text-[50px] lg:text-[60px] font-bold text-[#222222] font-['DM Sans'] tracking-[-1.2px] sm:tracking-[-1.5px] lg:tracking-[-1.8px] leading-[1]">
                       <CountUp end={70} duration={2000} />
                     </span>
-                    <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.48px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] ml-1 mb-2 sm:mb-3">
+                    <span className="text-[18px] sm:text-[22px] lg:text-[26px] font-semibold text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] ml-1 mb-2 sm:mb-3">
                       %
                     </span>
                   </div>
-                  <h3 className="text-[18px] sm:text-[20px] lg:text-[24px] font-medium text-[#222222] font-['Pretendard'] tracking-[-0.54px] sm:tracking-[-0.6px] lg:tracking-[-0.72px] leading-[1] mb-3 sm:mb-4">
+                  <h3 className="text-[20px] sm:text-[22px] lg:text-[26px] font-medium text-[#222222] font-['Pretendard'] tracking-[-0.6px] sm:tracking-[-0.66px] lg:tracking-[-0.78px] leading-[1] mb-3 sm:mb-4">
                     디자인 리드타임 단축
                   </h3>
                 </div>
-                <p className="text-[14px] sm:text-[16px] lg:text-[20px] font-normal text-[#666666] font-['Pretendard'] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2] flex-1">
+                <p className="text-[16px] sm:text-[18px] lg:text-[22px] font-normal text-[#666666] font-['Pretendard'] leading-[1.4] sm:leading-[1.3] lg:leading-[1.2] flex-1">
                   <span className="block lg:hidden">
                     스타일가이드 기반 자동 생성으로 일관성과 속도를 확보합니다.
                   </span>
@@ -1142,16 +1147,16 @@ export default function AutoPageAI() {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <div className="relative group cursor-pointer">
-              {/* Video Container with exact Figma dimensions */}
-              <div className="w-full h-[340px] sm:h-[480px] lg:h-[680px] relative">
+              {/* Video Container with 16:9 aspect ratio */}
+              <div className="w-full aspect-video relative">
                 {/* Thumbnail with play button overlay */}
                 {!isVideoPlaying && (
                   <>
                     <Image
-                      src="/images/autopageai-thumbnail.jpg"
+                      src="/images/autopageai-thumbnail.png"
                       alt="AutoPageAI Demo Video Thumbnail"
                       fill
-                      className="rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] border border-slate-200 shadow-md object-cover"
+                      className="rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] shadow-md object-cover"
                       onClick={handlePlayVideo}
                     />
                     
@@ -1173,11 +1178,11 @@ export default function AutoPageAI() {
                 <video
                   ref={videoRef}
                   src="https://jdgzfr6tu34zs94q.public.blob.vercel-storage.com/autopageai-demo.mp4"
-                  poster="/images/autopageai-thumbnail.jpg"
+                  poster="/images/autopageai-thumbnail.png"
                   controls
                   preload="metadata"
                   playsInline
-                  className={isVideoPlaying ? "rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] border border-slate-200 shadow-md w-full h-full object-cover" : "hidden"}
+                  className={isVideoPlaying ? "rounded-[16px] sm:rounded-[24px] lg:rounded-[32px] shadow-md w-full h-full object-cover" : "hidden"}
                   id="demoVideo"
                 />
               </div>
@@ -1263,13 +1268,13 @@ export default function AutoPageAI() {
               transition={{ duration: 0.6 }}
             >
               <span className="block sm:hidden">
-                프레임아웃은 디지털 경험의<br />
-                본질을 탐구하는<br />
-                Intelligent eXperience Explorer입니다.
+                프레임아웃은 IX를 중심으로<br />
+                AI 기술을 활용한<br />
+                혁신적인 디지털 경험을 제공합니다.
               </span>
               <span className="hidden sm:block">
-                프레임아웃은 디지털 경험의 본질을 탐구하는<br />
-                Intelligent eXperience Explorer입니다.
+                프레임아웃은 IX를 중심으로 AI 기술을 활용한<br />
+                혁신적인 디지털 경험을 제공합니다.
               </span>
             </motion.p>
 
