@@ -1,0 +1,69 @@
+{
+    "redirects": [
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "www.identivis.ai.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/identivis",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "identivis.ai.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/identivis",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "www.convers.ai.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/conversai",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "convers.ai.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/conversai",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "www.autopage.ai.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/autopageai",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "autopage.ai.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/autopageai",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "axc.frameout.com" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/",
+        "permanent": true
+      },
+      {
+        "source": "/",
+        "has": [
+          { "type": "host", "value": "axc.frameout.co.kr" }
+        ],
+        "destination": "https://yourworkspace-zeta.vercel.app/",
+        "permanent": true
+      }
+    ]
+  }
+  
