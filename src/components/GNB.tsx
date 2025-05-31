@@ -36,6 +36,13 @@ export function GNB({ isVideoPlaying = false }: GNBProps) {
     }
   }, [pathname])
 
+  // 초기 스크롤 상태 설정
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsScrolled(window.scrollY > 0)
+    }
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
@@ -86,76 +93,141 @@ export function GNB({ isVideoPlaying = false }: GNBProps) {
   }, [isMobileMenuOpen])
 
   return (
-    <nav className={`fixed top-0 w-full z-30 transition-all duration-700 ease-in-out ${
-      isScrolled ? "bg-white shadow-sm" : "bg-transparent"
-    } ${
-      isVisible ? "translate-y-0" : "-translate-y-full"
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop Layout */}
-        <div className="hidden md:block">
-          {/* Main logo area - centered with contact button on right */}
-          <div className="flex justify-between items-center pt-4 pb-4">
-            {/* Left spacer for balance */}
-            <div className="w-24"></div>
+    <>
+      <nav className={`fixed top-0 w-full z-30 transition-all duration-700 ease-in-out ${
+        isScrolled ? "bg-white shadow-sm" : "bg-transparent"
+      } ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Desktop Layout */}
+          <div className="hidden md:block">
+            {/* Main logo area - centered with contact button on right */}
+            <div className="flex justify-between items-center pt-4 pb-4">
+              {/* Left spacer for balance */}
+              <div className="w-24"></div>
+              
+              {/* Center logo */}
+              <Logo isScrolled={isScrolled} />
+              
+              {/* Right contact button */}
+              <Button
+                asChild
+                className="bg-black text-white hover:bg-[#F26222] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 text-[16px] font-semibold font-['Pretendard']"
+              >
+                <Link href="/contact">문의하기</Link>
+              </Button>
+            </div>
             
-            {/* Center logo */}
-            <Logo isScrolled={isScrolled} />
-            
-            {/* Right contact button */}
-            <Button
-              asChild
-              className="bg-black text-white hover:bg-[#F26222] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 text-[16px] font-semibold font-['Pretendard']"
-            >
-              <Link href="/contact">문의하기</Link>
-            </Button>
-          </div>
-          
-          {/* Navigation menu - centered */}
-          <div className="flex justify-center items-center pb-0">
-            <div className="flex items-center space-x-8">
-              {navItems.map((item) => {
-                const isActive = currentPath === item.href
-                
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`text-[16px] font-['Pretendard'] ${
-                      isScrolled ? 'text-black' : 'text-white'
-                    } transition-all duration-300 hover:font-bold ${
-                      isActive ? 'font-bold' : 'font-normal'
-                    }`}
-                    style={{
-                      width: item.name === 'AutoPageAI' ? '90px' : 
-                             item.name === 'ConversAI' ? '85px' : 
-                             item.name === 'IdentiVis' ? '75px' : 'auto',
-                      textAlign: 'center',
-                      display: 'inline-block'
-                    }}
-                  >
-                    {item.name}
-                  </Link>
-                )
-              })}
+            {/* Navigation menu - centered */}
+            <div className="flex justify-center items-center pb-0">
+              <div className="flex items-center space-x-8">
+                {navItems.map((item) => {
+                  const isActive = currentPath === item.href
+                  
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`text-[16px] font-['Pretendard'] ${
+                        isScrolled ? 'text-black' : 'text-white'
+                      } transition-all duration-300 hover:font-bold ${
+                        isActive ? 'font-bold' : 'font-normal'
+                      }`}
+                      style={{
+                        width: item.name === 'AutoPageAI' ? '90px' : 
+                               item.name === 'ConversAI' ? '85px' : 
+                               item.name === 'IdentiVis' ? '75px' : 'auto',
+                        textAlign: 'center',
+                        display: 'inline-block'
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Layout */}
-        <div className="md:hidden flex justify-between items-center h-24 pt-4 pb-4">
+      {/* Mobile Layout - 완전 독립 */}
+      <div 
+        className={`fixed top-0 w-full z-30 md:hidden transition-all duration-700 ease-in-out ${
+          isScrolled ? "bg-white shadow-sm" : "bg-transparent"
+        } ${
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+        style={{ 
+          left: 0, 
+          right: 0, 
+          margin: 0, 
+          padding: 0,
+          boxSizing: 'border-box',
+          position: 'fixed',
+          top: 0,
+          width: '100vw',
+          maxWidth: '100vw'
+        }}
+      >
+        <div 
+          className="flex justify-between items-center h-24"
+          style={{ 
+            paddingLeft: '24px', 
+            paddingRight: '24px',
+            margin: 0,
+            boxSizing: 'border-box',
+            width: '100%',
+            maxWidth: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
           {/* Logo */}
-          <div className="flex-shrink-0 pl-1">
+          <div 
+            className="flex items-center flex-shrink-0"
+            style={{ 
+              flex: '0 0 auto',
+              margin: 0,
+              padding: 0
+            }}
+          >
             <Logo variant="mobile" isScrolled={isScrolled} />
           </div>
 
           {/* Mobile menu button */}
-          <div className="pr-2 flex-shrink-0">
+          <div 
+            className="flex items-center flex-shrink-0"
+            style={{ 
+              flex: '0 0 auto',
+              margin: 0,
+              padding: 0
+            }}
+          >
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black hover:text-black transition-colors duration-300 mr-6"
-              style={{ marginRight: '24px' }}
+              className={`flex items-center justify-center w-12 h-12 ${
+                isScrolled ? 'text-black' : 'text-white'
+              } hover:text-[#F26222] transition-colors duration-300 rounded-lg ${
+                isScrolled ? 'hover:bg-gray-50 active:bg-gray-100' : 'hover:bg-white/10 active:bg-white/20'
+              }`}
               aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+              style={{ 
+                minWidth: '48px', 
+                minHeight: '48px',
+                width: '48px',
+                height: '48px',
+                margin: 0,
+                padding: 0,
+                border: 'none',
+                background: 'transparent',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -171,18 +243,71 @@ export function GNB({ isVideoPlaying = false }: GNBProps) {
             animate={{ opacity: 1, height: '100vh' }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden fixed inset-0 z-40 bg-white backdrop-blur-md overflow-hidden"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100vw',
+              height: '100vh',
+              maxWidth: '100vw',
+              margin: 0,
+              padding: 0,
+              boxSizing: 'border-box'
+            }}
           >
             {/* Mobile Menu Header */}
-            <div className="sticky top-0 flex justify-between items-center h-24 pt-4 pb-4 bg-white border-b border-gray-100 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex-shrink-0 pl-1">
+            <div 
+              className="sticky top-0 flex justify-between items-center h-24 bg-white border-b border-gray-100"
+              style={{ 
+                paddingLeft: '24px', 
+                paddingRight: '24px',
+                margin: 0,
+                boxSizing: 'border-box',
+                width: '100%',
+                maxWidth: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}
+            >
+              <div 
+                className="flex items-center"
+                style={{ 
+                  flex: '0 0 auto',
+                  margin: 0,
+                  padding: 0
+                }}
+              >
                 <Logo variant="mobile" />
               </div>
-              <div className="pr-2 flex-shrink-0">
+              <div 
+                className="flex items-center"
+                style={{ 
+                  flex: '0 0 auto',
+                  margin: 0,
+                  padding: 0
+                }}
+              >
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-black hover:text-black transition-colors duration-300 mr-6"
-                  style={{ marginRight: '24px' }}
+                  className="flex items-center justify-center w-12 h-12 text-black hover:text-[#F26222] transition-colors duration-300 rounded-lg hover:bg-gray-50 active:bg-gray-100"
                   aria-label="닫기"
+                  style={{ 
+                    minWidth: '48px', 
+                    minHeight: '48px',
+                    width: '48px',
+                    height: '48px',
+                    margin: 0,
+                    padding: 0,
+                    border: 'none',
+                    background: 'transparent',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
                 >
                   <X size={24} />
                 </button>
@@ -222,6 +347,6 @@ export function GNB({ isVideoPlaying = false }: GNBProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   )
 } 

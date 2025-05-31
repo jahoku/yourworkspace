@@ -133,24 +133,24 @@ export function SubpageGNB() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Layout */}
-        <div className="md:hidden flex justify-between items-center h-24 pt-4 pb-4">
-          {/* Logo */}
-          <div className="flex-shrink-0 pl-1">
-            <Logo variant="mobile" isScrolled={true} />
-          </div>
+      {/* Mobile Layout - 완전 독립 */}
+      <div className="md:hidden flex justify-between items-center h-24 px-6">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Logo variant="mobile" isScrolled={true} />
+        </div>
 
-          {/* Mobile menu button */}
-          <div className="pr-2 flex-shrink-0">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black hover:text-black transition-colors duration-300 mr-6"
-              style={{ marginRight: '24px' }}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+        {/* Mobile menu button */}
+        <div className="flex items-center">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="flex items-center justify-center w-12 h-12 text-black hover:text-[#F26222] transition-colors duration-300 rounded-lg hover:bg-gray-50 active:bg-gray-100"
+            aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
 
@@ -164,15 +164,14 @@ export function SubpageGNB() {
             className="md:hidden fixed inset-0 z-40 bg-white backdrop-blur-md overflow-hidden"
           >
             {/* Mobile Menu Header */}
-            <div className="sticky top-0 flex justify-between items-center h-24 pt-4 pb-4 bg-white border-b border-gray-100 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex-shrink-0 pl-1">
+            <div className="sticky top-0 flex justify-between items-center h-24 bg-white border-b border-gray-100 px-6">
+              <div className="flex items-center">
                 <Logo variant="mobile" />
               </div>
-              <div className="pr-2 flex-shrink-0">
+              <div className="flex items-center">
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-black hover:text-black transition-colors duration-300 mr-6"
-                  style={{ marginRight: '24px' }}
+                  className="flex items-center justify-center w-12 h-12 text-black hover:text-[#F26222] transition-colors duration-300 rounded-lg hover:bg-gray-50 active:bg-gray-100"
                   aria-label="닫기"
                 >
                   <X size={24} />
