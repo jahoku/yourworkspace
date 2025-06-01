@@ -253,7 +253,7 @@ export function HeroSection({ onVideoStateChange }: HeroSectionProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex justify-center text-white/80 hover:text-white transition-colors duration-300 cursor-pointer"
+        className="absolute bottom-20 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex justify-center text-white/80 hover:text-white transition-colors duration-300 cursor-pointer"
       >
         <motion.div 
           variants={scrollIconVariants}

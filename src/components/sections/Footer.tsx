@@ -43,7 +43,7 @@ export function Footer() {
               <span className="hidden md:inline text-[#cccccc]">|</span>
               <span>02-514-5671</span>
               <span className="hidden md:inline text-[#cccccc]">|</span>
-              <a href="mailto:axc@frameout.co.kr" className="hover:text-gray-800 transition-colors">
+              <a href="mailto:axc@frameout.co.kr" className="inline-flex items-center hover:text-gray-800 transition-colors">
                 axc@frameout.co.kr
               </a>
             </div>

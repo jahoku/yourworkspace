@@ -334,7 +334,7 @@ export function GNB({ isVideoPlaying = false }: GNBProps) {
                 ))}
               </div>
               <div className="flex-1"></div>
-              <div className="px-4 pb-16 mb-8">
+              <div className="px-4 pb-32 mb-16">
                 <Button
                   asChild
                   className="bg-black text-white hover:bg-[#F26222] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6 py-4 w-[118px] h-[56px] text-[20px] font-semibold font-['Pretendard']"
